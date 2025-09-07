@@ -365,12 +365,12 @@ hr {
 
 @media only screen and (max-width: 768px) {
     .hero {
-        padding: 5rem 0 3rem 0;
+        padding: 4rem 0 4rem 0;
         text-align: left;
     }
 
     .hero__title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     
     .hero__subtitle {
@@ -574,6 +574,12 @@ hr {
 
 .layer-link:last-child {
     border-bottom: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .layer-link {
+        font-size: 1rem;
+    }
 }
 
 
