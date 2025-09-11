@@ -1,87 +1,78 @@
 // Minimal JavaScript for The Agentic State website
 document.addEventListener('DOMContentLoaded', function() {
-    
+    const body = document.body;
+  
     // Mobile menu toggle
     const modalToggle = document.querySelector('.modal-toggle');
-    const body = document.body;
-    
     if (modalToggle) {
-        modalToggle.addEventListener('click', function() {
-            body.classList.toggle('is-modal-open');
-        });
+      modalToggle.addEventListener('click', function() {
+        body.classList.toggle('is-modal-open');
+      });
     }
-    
+  
     // Close modal when clicking outside
     document.addEventListener('click', function(e) {
-        if (body.classList.contains('is-modal-open') && 
-            !e.target.closest('.modal') && 
-            !e.target.closest('.modal-toggle')) {
-            body.classList.remove('is-modal-open');
-        }
+      if (body.classList.contains('is-modal-open') &&
+          !e.target.closest('.modal') &&
+          !e.target.closest('.modal-toggle')) {
+        body.classList.remove('is-modal-open');
+      }
     });
-    
-    // Scroll to top button functionality
+  
+    // Scroll to top button (if you add one with class .up)
     const upButton = document.querySelector('.up');
     if (upButton) {
-        upButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+      upButton.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
-    
+  
     // Show/hide scroll to top button
     let isScrolledDown = false;
     window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset > 100;
-        if (scrolled !== isScrolledDown) {
-            isScrolledDown = scrolled;
-            body.classList.toggle('is-scrolled-down', scrolled);
-        }
+      const scrolled = window.pageYOffset > 100;
+      if (scrolled !== isScrolledDown) {
+        isScrolledDown = scrolled;
+        body.classList.toggle('is-scrolled-down', scrolled);
+      }
     });
-    
-    // Whitepaper navigation functionality (only on whitepaper page)
-    const navLinks = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section[id]');
-    
-    if (navLinks.length > 0 && sections.length > 0) {
-        // Smooth scrolling for navigation links
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetSection = document.getElementById(targetId);
-                
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+  
+    // ===== Whitepaper Reader: Bootstrap Scrollspy init =====
+    const headerHeight = parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--headerHeight')) || 64;
+  
+    const scrollbox = document.getElementById('wp-scrollbox');
+    if (scrollbox && window.bootstrap) {
+      // Initialize / reinitialize Scrollspy tied to the scrollbox
+      const instance = bootstrap.ScrollSpy.getOrCreateInstance(scrollbox, {
+        target: '#wp-navbar',
+        offset: headerHeight + 16
+      });
+  
+      // Smooth-scroll when choosing a chapter; close dropdown afterward
+      document.querySelectorAll('#wp-navbar .dropdown-item').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if (id && id.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(id);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            const dd = a.closest('.dropdown');
+            if (dd) {
+              const toggle = dd.querySelector('[data-bs-toggle="dropdown"]');
+              if (toggle) bootstrap.Dropdown.getOrCreateInstance(toggle).hide();
+            }
+          }
         });
-        
-        // Active navigation highlighting on scroll
-        window.addEventListener('scroll', function() {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
+      });
+  
+      // Recalculate on content/size changes
+      window.addEventListener('resize', () => instance.refresh());
     }
-    
-    // Add JavaScript class to body for enhanced functionality
+  
+    // Add JS-enabled class
     body.classList.add('is-js');
-}); 
+  });
+  
