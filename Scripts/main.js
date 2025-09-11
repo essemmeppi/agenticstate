@@ -10,11 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   
-    // Close modal when clicking outside
+    // Close site-modal when clicking outside
     document.addEventListener('click', function(e) {
-      if (body.classList.contains('is-modal-open') &&
-          !e.target.closest('.modal') &&
-          !e.target.closest('.modal-toggle')) {
+      if (
+        body.classList.contains('is-modal-open') &&
+        !e.target.closest('.site-modal') &&
+        !e.target.closest('.modal-toggle')
+      ) {
         body.classList.remove('is-modal-open');
       }
     });

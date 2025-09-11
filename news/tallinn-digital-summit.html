@@ -10,7 +10,7 @@
   </head>
   <body>
     <header class="header">
-      <div class="header__inner container">
+      <div class="header__inner site-container">
         <div class="header__logo">
           <a href="../index.html" class="header__link">THE AGENTIC STATE</a>
         </div>
@@ -29,13 +29,14 @@
       </div>
     </header>
 
-    <div class="modal">
-      <div class="container">
-        <ul class="modal__items">
-          <li class="modal__item"><a href="../index.html" class="modal__link">Home</a></li>
-          <li class="modal__item"><a href="../whitepaper.html" class="modal__link">Whitepaper</a></li>
-          <li class="modal__item"><a href="../news.html" class="modal__link">News</a></li>
-          <li class="modal__item"><a href="../contacts.html" class="modal__link">Contact</a></li>
+    <!-- Mobile menu (namespaced) -->
+    <div class="site-modal">
+      <div class="site-container">
+        <ul class="site-modal__items">
+          <li class="site-modal__item"><a href="../index.html" class="site-modal__link">Home</a></li>
+          <li class="site-modal__item"><a href="../whitepaper.html" class="site-modal__link">Whitepaper</a></li>
+          <li class="site-modal__item"><a href="../news.html" class="site-modal__link">News</a></li>
+          <li class="site-modal__item"><a href="../contacts.html" class="site-modal__link">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -43,7 +44,7 @@
     <main class="main">
       <!-- Title Section -->
       <section class="hero">
-        <div class="container">
+        <div class="site-container">
           <div class="grid">
             <div class="grid-6">
               <h1 class="hero__title">We launched Whitepaper v2.0 at Tallinn Digital Summit 2025</h1>
@@ -54,26 +55,22 @@
 
       <!-- Content -->
       <section class="section">
-        <div class="container">
+        <div class="site-container">
           <div class="grid">
             <div class="grid-2">
-              <h2 class="section__content", style="color: var(--accent-color);">09.10.25</h2>
+              <h2 class="section__content" style="color: var(--accent-color);">09.10.25</h2>
             </div>
             <div class="grid-4">
               <div class="section__content">
                 <p>In October 2025, at the <strong>Tallinn Digital Summit</strong>, The Agentic State launched <strong>Whitepaper v2.0</strong> — the most comprehensive roadmap to date for how governments can adopt agentic AI responsibly and ambitiously.</p>
-      
                 <p>Whitepaper v2.0 builds on the first edition, which introduced the concept of the <em>Agentic State</em> and sparked international interest in the idea that governments must prepare for AI systems that can reason, act, and learn. Version 2.0 goes further: it provides governments with the <strong>tools, frameworks, and partnerships</strong> they need to move from vision to action.</p>
-      
                 <p>The whitepaper is structured around the <strong>three waves of adoption</strong>:</p>
                 <ul>
                   <li><strong>Agenda Setting</strong> — helping leaders understand the stakes, articulate a vision, and build political momentum.</li>
                   <li><strong>Moving Theory to Practice</strong> — mapping out functional areas where agentic AI can have the most immediate impact, from decision support to citizen interaction.</li>
                   <li><strong>Implementation</strong> — outlining the institutional and technological foundations needed for sustainable adoption, from digital public infrastructure to readiness assessments.</li>
                 </ul>
-      
                 <p>At the Tallinn Digital Summit, heads of government, ministers, and digital leaders from across the world discussed these waves and endorsed the need for coordinated action. The whitepaper was presented not just as a report, but as an <strong>invitation to governments</strong>: a call to join the global platform and shape the next phase of public administration together.</p>
-      
                 <p><strong>What is new in v2.0?</strong></p>
                 <ul>
                   <li>A detailed mapping of functional government tasks that agentic AI can disrupt.</li>
@@ -82,21 +79,18 @@
                   <li>Exploration of enabling conditions, from digital identity and payments infrastructure to compute capacity.</li>
                   <li>A forward look at potential operating models, such as an Agentic DPI Center of Excellence.</li>
                 </ul>
-      
                 <p>By presenting this in Tallinn — a city synonymous with digital government innovation — we underlined a simple message: agentic AI is not a distant future. It is arriving now, and governments need to act.</p>
-      
                 <p>Whitepaper v2.0 is available to read online and download in PDF. But more importantly, it is designed to be <strong>used</strong>: as a reference in cabinet discussions, as a tool for digital ministries, as a framework for international cooperation.</p>
-      
                 <p>The Agentic State will continue to build on the whitepaper’s momentum in the months ahead, working with governments and partners to turn its insights into practice. Agentic AI will transform how governments operate. With Whitepaper v2.0, we have taken a decisive step to bring that transformation into action.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-  
+
       <!-- Stay Connected Section -->
       <section class="stay-connected">
-        <div class="container">
+        <div class="site-container">
           <div class="stay-connected__content">
             <div>
               <h2 class="stay-connected__title">Stay connected</h2>
@@ -113,7 +107,7 @@
     </main>
 
     <footer class="footer">
-      <div class="container">
+      <div class="site-container">
         <div class="footer__content">
           <div class="footer__text">
             <p>&copy; THE AGENTIC STATE 2025</p>
@@ -128,6 +122,7 @@
       </div>
     </footer>
 
-    <script src="Scripts/main.js"></script>
+    <!-- Note the path up one level -->
+    <script src="../Scripts/main.js"></script>
   </body>
 </html>
