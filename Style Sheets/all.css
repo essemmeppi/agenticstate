@@ -1,5 +1,5 @@
-/* Import Hubot Sans font */
-@import url('https://fonts.googleapis.com/css2?family=Hubot+Sans:wght@300;400;500;600;700&display=swap');
+/* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@90,100..900&display=swap');
 
 /* Reset and base styles */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
@@ -31,12 +31,12 @@ html {
 
 /* Base body styles */
 body {
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #000;
   --background: #fff;
   background-color: #fff;
-  font-family: "Hubot Sans", Helvetica, sans-serif;
-  font-weight: 300;
+  font-family: "Archivo", Helvetica, sans-serif;
+  font-weight: 100;
   line-height: 1.5;
   transition: background 400ms cubic-bezier(0.19, 1, 0.22, 1), color 400ms cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -81,13 +81,13 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
   border-bottom: 1px solid #eee;
 }
 .header__inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
-.header__logo { font-weight: 300; font-size: 1.2rem; color: #000; }
+.header__logo { font-weight: 200; font-size: 1.2rem; color: #000; }
 .header__logo img { display: none; }
 .header__nav { display: flex; align-items: center; gap: 2rem; }
 .header__items { display: flex; align-items: center; gap: 2rem; list-style: none; margin: 0; padding: 0; }
 .header__item { display: inline-block; }
 .header__item--toggle { display: none; }
-.header__link { color: #000; text-decoration: none; font-weight: 300; transition: color 150ms; }
+.header__link { color: #000; text-decoration: none; font-weight: 200; transition: color 150ms; }
 .header__link:hover { color: var(--accent-color); }
 
 @media only screen and (max-width: 768px) {
@@ -127,7 +127,7 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .btn {
   display: inline-block; padding: 0.75rem 1.5rem; background-color: var(--accent-color); color: white;
   text-decoration: none; border: none; border-radius: 40px;
-  font-family: "Hubot Sans", Helvetica, sans-serif; font-weight: 400; font-size: 1rem; cursor: pointer; transition: all 0.2s ease;
+  font-family: "Archivo", Helvetica, sans-serif; font-weight: 400; font-size: 1rem; cursor: pointer; transition: all 0.2s ease;
 }
 .btn:hover { background-color: #8b7ae8; transform: translateY(-1px); }
 .btn--secondary { background-color: transparent; color: var(--accent-color); border: 2px solid var(--accent-color); }
@@ -135,11 +135,11 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 
 /* Hero */
 .hero { padding: 12rem 0 15rem 0; text-align: left; }
-.hero__title { font-size: 3.5rem; font-weight: 300; line-height: 1.1; margin-bottom: 2rem; max-width: 800px; }
-.hero__subtitle { font-size: 1.25rem; font-weight: 300; line-height: 1.4; margin-bottom: 3rem; max-width: 600px; }
+.hero__title { font-size: 4rem; font-weight: 200; line-height: 1; margin-bottom: 2rem; max-width: 800px; }
+.hero__subtitle { font-size: 1.25rem; font-weight: 100; line-height: 1.4; margin-bottom: 3rem; max-width: 600px; }
 
 @media only screen and (max-width: 768px) {
-  .hero { padding: 4rem 0 4rem 0; text-align: left; }
+  .hero { padding: 1rem 0 4rem 0; text-align: left; }
   .hero__title { font-size: 1.8rem; }
   .hero__subtitle { font-size: 1rem; }
 }
@@ -147,11 +147,11 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 /* Section */
 .section { margin-bottom: 6rem; }
 .section:first-of-type { margin-top: 4rem; }
-.section__title { font-size: 1.5rem; font-weight: 400; margin-bottom: 2rem; color: #000; }
-.section__content { font-size: 1rem; line-height: 1.6; color: #333; }
+.section__title { font-size: 1.5rem; font-weight: 300; margin-bottom: 2rem; color: #000; }
+.section__content { font-size: 1.2rem; font-weight: 100; line-height: 1.4; color: #333; }
 .section__content ul { list-style: disc; padding-left: 1.2rem; margin-bottom: 1.2rem; }
 .section__content li { margin-bottom: 0.6rem; }
-strong, b { font-weight: 400; }
+strong, b { font-weight: 300; }
 
 /* Logo grid */
 .logo-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; margin: 2rem 0; }
@@ -163,7 +163,7 @@ strong, b { font-weight: 400; }
 .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
 .news-card { background-color: #f9f9f9; padding: 1.5rem; border-radius: 4px; border: 1px solid #eee; transition: background-color 0.2s ease; }
 .news-card:hover { background-color: var(--accent-color); color: #eee; }
-.news-card__title { font-size: 1.1rem; font-weight: 400; margin-bottom: 0.5rem; color: #000; }
+.news-card__title { font-size: 1.1rem; font-weight: 300; margin-bottom: 0.5rem; color: #000; }
 .news-card__excerpt { font-size: 0.9rem; color: #666; line-height: 1.4; }
 .news-card__title, .news-card__excerpt { transition: color 0.2s ease; }
 .news-card:hover .news-card__title, .news-card:hover .news-card__excerpt { color: #fff; }
@@ -172,10 +172,10 @@ strong, b { font-weight: 400; }
 /* Stay Connected */
 .stay-connected { background-color: #f8f9fa; padding: 3rem 0; margin: 4rem 0; }
 .stay-connected__content { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: center; }
-.stay-connected__title { font-size: 1.5rem; font-weight: 400; margin-bottom: 1rem; color: #000; }
+.stay-connected__title { font-size: 1.5rem; font-weight: 300; margin-bottom: 1rem; color: #000; }
 .stay-connected__description { font-size: 1rem; color: #666; margin-bottom: 0; }
 .stay-connected__form { display: flex; gap: 1rem; align-items: end; }
-.stay-connected__input { flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-family: "Hubot Sans", Helvetica, sans-serif; font-size: 1rem; }
+.stay-connected__input { flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-family: "Archivo", Helvetica, sans-serif; font-size: 1rem; }
 .stay-connected__input:focus { outline: none; border-color: var(--accent-color); }
 @media only screen and (max-width: 768px) {
   .stay-connected__content { grid-template-columns: 1fr; gap: 2rem; }
@@ -252,8 +252,8 @@ html { box-sizing: border-box; }
     text-decoration: none;
     border: none;
     border-radius: 40px;
-    font-family: "Hubot Sans", Helvetica, sans-serif;
-    font-weight: 400;
+    font-family: "Archivo", Helvetica, sans-serif;
+    font-weight: 300;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
