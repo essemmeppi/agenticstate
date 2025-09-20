@@ -152,6 +152,9 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .section__content ul { list-style: disc; padding-left: 1.2rem; margin-bottom: 1.2rem; }
 .section__content li { margin-bottom: 0.6rem; }
 strong, b { font-weight: 300; }
+@media (max-width: 768px) {
+  .section__content {font-size: 1rem;}
+}
 
 /* Logo grid */
 .logo-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; margin: 2rem 0; }
@@ -175,7 +178,7 @@ strong, b { font-weight: 300; }
 .stay-connected__title { font-size: 1.5rem; font-weight: 300; margin-bottom: 1rem; color: #000; }
 .stay-connected__description { font-size: 1rem; color: #666; margin-bottom: 0; }
 .stay-connected__form { display: flex; gap: 1rem; align-items: end; }
-.stay-connected__input { flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-family: "Archivo", Helvetica, sans-serif; font-size: 1rem; }
+.stay-connected__input { flex: 1; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-family: "Archivo", Helvetica, sans-serif; font-size: 1rem; font-weight: 100;}
 .stay-connected__input:focus { outline: none; border-color: var(--accent-color); }
 @media only screen and (max-width: 768px) {
   .stay-connected__content { grid-template-columns: 1fr; gap: 2rem; }
@@ -222,7 +225,10 @@ strong, b { font-weight: 300; }
 
 /* Optional: tidy the navbar on mobile */
 @media (max-width: 768px) {
-  #wp-navbar .navbar-brand { font-size: 0.95rem; }
+  #wp-navbar .navbar-brand { font-size: 0.9rem; }
+  #wp-scrollbox :where(p, li, blockquote, figcaption, dd, td) {
+    font-size: 0.96rem; /* 0.96 × 20px root = 19.2px */
+  }
 }
 
 /* Accent for Bootstrap active/hover states so it matches your theme */
@@ -253,7 +259,7 @@ html { box-sizing: border-box; }
     border: none;
     border-radius: 40px;
     font-family: "Archivo", Helvetica, sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -303,3 +309,19 @@ html { box-sizing: border-box; }
     font-weight: 200;
   }
   
+/* Whitepaper reader headings */
+.tas-scope #wp-scrollbox h1 {
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: var(--accent-color);
+}
+
+.tas-scope #wp-scrollbox h2 {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.tas-scope #wp-scrollbox h3 {
+  font-style: italic;
+  font-size: 1.1rem;
+}
