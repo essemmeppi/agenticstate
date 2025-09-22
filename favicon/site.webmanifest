@@ -1,11 +1,13 @@
 {
-    "name": "The Agentic State",
-    "short_name": "Agentic State",
-    "icons": [
-      { "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
-      { "src": "/favicon/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
-    ],
-    "theme_color": "#a491fc",
-    "background_color": "#ffffff",
-    "display": "standalone"
-  }
+  "name": "The Agentic State",
+  "short_name": "Agentic State",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#a491fc",
+  "background_color": "#ffffff",
+  "icons": [
+    { "src": "/favicon/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/favicon/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
