@@ -1,5 +1,5 @@
 /* Import font */
-@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,300;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,200..300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wdth,wght@75..125,100..900&display=swap');
 
 /* Reset and base styles */
@@ -135,8 +135,8 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .btn--secondary:hover { background-color: var(--accent-color); color: white; }
 
 /* Hero */
-.hero { padding: 12rem 0 15rem 0; text-align: left; }
-.hero__title { font-size: 4rem; font-weight: 350; line-height: 1; margin-bottom: 2rem; max-width: 800px;   font-family: "Newsreader", Helvetica, sans-serif;}
+.hero { padding: 13rem 0 18rem 0; text-align: left; }
+.hero__title { font-size: 3rem; font-weight: 350; line-height: 1; margin-bottom: 2rem; max-width: 700px;   font-family: "Newsreader", Helvetica, sans-serif;}
 .hero__subtitle { font-size: 1.25rem; font-weight: 200; line-height: 1.4; margin-bottom: 3rem; max-width: 600px; }
 
 @media only screen and (max-width: 768px) {
@@ -152,7 +152,7 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .section__content { font-size: 1.2rem; font-weight: 100; line-height: 1.4; color: #333; }
 .section__content ul { list-style: disc; padding-left: 1.2rem; margin-bottom: 1.2rem; }
 .section__content li { margin-bottom: 0.6rem; }
-strong, b { font-weight: 300; }
+strong, b { font-weight: 400; }
 @media (max-width: 768px) {
   .section__content {font-size: 1rem;}
 }
