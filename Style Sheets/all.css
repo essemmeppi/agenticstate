@@ -140,7 +140,7 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .hero__subtitle { font-size: 1.25rem; font-weight: 200; line-height: 1.4; margin-bottom: 3rem; max-width: 600px; }
 
 @media only screen and (max-width: 768px) {
-  .hero { padding: 1rem 0 4rem 0; text-align: left; }
+  .hero { padding: 1rem 0 6rem 0; text-align: left; }
   .hero__title { font-size: 1.8rem; }
   .hero__subtitle { font-size: 1rem; }
 }
@@ -149,7 +149,7 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .section { margin-bottom: 6rem; }
 .section:first-of-type { margin-top: 4rem; }
 .section__title { font-size: 1.5rem; font-weight: 350; margin-bottom: 2rem; color: #000;   font-family: "Newsreader", Helvetica, sans-serif;}
-.section__content { font-size: 1.2rem; font-weight: 100; line-height: 1.4; color: #333; }
+.section__content { font-size: 1.1rem; font-weight: 100; line-height: 1.4; color: #333; }
 .section__content ul { list-style: disc; padding-left: 1.2rem; margin-bottom: 1.2rem; }
 .section__content li { margin-bottom: 0.6rem; }
 strong, b { font-weight: 400; }
@@ -189,7 +189,7 @@ strong, b { font-weight: 400; }
 /* Layers list (legacy section—kept in case used elsewhere) */
 .layers-list { display: flex; flex-direction: column; }
 .layer-link { display: block; padding: 1rem 0; border-bottom: 1px solid #eee; color: #000; 
-  text-decoration: none; font-size: 1.5rem; font-family: "Newsreader", Helvetica, sans-serif;
+  text-decoration: none; font-size: 1.1rem; font-family: "Inter", Helvetica, sans-serif;
   line-height: 1.2; transition: color 0.2s ease; }
 .layer-link:hover { color: var(--accent-color); }
 .layer-link:last-child { border-bottom: none; }
@@ -331,4 +331,156 @@ html { box-sizing: border-box; }
 .tas-scope #wp-scrollbox h3 {
   font-style: italic;
   font-size: 1.1rem;
+}
+
+/* ===== Whitepaper content tweaks (minimal) ===== */
+
+/* Restore readable links only inside reader */
+.tas-scope #wp-scrollbox a {
+  text-decoration: underline;
+}
+
+/* Comfortable paragraph rhythm */
+.tas-scope #wp-scrollbox p {
+  line-height: 1.65;
+}
+
+/* Lists (your global reset removes bullets) */
+.tas-scope #wp-scrollbox ul,
+.tas-scope #wp-scrollbox ol {
+  margin: 0.75rem 0 1rem 1.25rem;
+}
+.tas-scope #wp-scrollbox ul { list-style: disc; }
+.tas-scope #wp-scrollbox ol { list-style: decimal; }
+.tas-scope #wp-scrollbox li { margin: 0.35rem 0; }
+.tas-scope #wp-scrollbox ul ul { list-style: circle; margin-top: 0.25rem; }
+.tas-scope #wp-scrollbox ol ol { list-style: lower-alpha; margin-top: 0.25rem; }
+
+/* Blockquotes */
+.tas-scope #wp-scrollbox blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background: #faf9ff;
+  color: #333;
+  font-style: italic;
+}
+
+/* Inline code */
+.tas-scope #wp-scrollbox code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.95em;
+  background: #f4f4f8;
+  border: 1px solid #e8e8ef;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+/* Tables: general fallback */
+.tas-scope #wp-scrollbox table {
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;            /* keeps rounded corners when scrolling */
+  margin: 1rem 0 2rem 0;
+  display: block;              /* allow horizontal scroll on small screens */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.tas-scope #wp-scrollbox thead th {
+  background: #f7f7fb;
+  text-align: left;
+  font-size: 0.9em; 
+  font-weight: 400;
+  white-space: nowrap;
+}
+.tas-scope #wp-scrollbox tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+.tas-scope #wp-scrollbox tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* TL;DR card (table-as-callout) */
+.tas-scope #wp-scrollbox .wp-callout {
+  border-left: 6px solid var(--accent-color);
+  background: #faf9ff;
+}
+.tas-scope #wp-scrollbox .wp-callout thead th {
+  font-weight: 400;
+  padding-top: 1rem;
+}
+.tas-scope #wp-scrollbox .wp-callout tbody td {
+  font-style: italic;
+  color: #555;
+  padding-bottom: 1rem;
+}
+
+/* Slightly larger H1 in reader for hierarchy */
+.tas-scope #wp-scrollbox h1 { font-size: 1.5rem; }
+
+.tas-scope #wp-scrollbox .wp-note {
+  width: 100%;
+  border: 1px solid var(--accent-color);   /* outer border uses accent */
+  border-radius: 8px;
+  background: #fff;
+  margin: 1rem 0 1.5rem;
+}
+
+/* TL;DR row background */
+.tas-scope #wp-scrollbox .wp-note tr:first-child td {
+  background: #d9d0ff;
+  color: #222;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.tas-scope #wp-scrollbox .wp-table {
+  width: 100%;
+  border: 1px solid var(--accent-color);
+  border-radius: 8px;
+  overflow: hidden;               /* lets the radius clip the header bg */
+  background: #fff;
+  border-collapse: separate;
+  border-spacing: 0;              /* no gaps between cells */
+  table-layout: fixed;            /* columns fill width; wraps nicely */
+}
+
+.tas-scope #wp-scrollbox .wp-table th,
+.tas-scope #wp-scrollbox .wp-table td {
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+  text-align: left;
+  vertical-align: middle;
+  overflow-wrap: anywhere;        /* prevent overflow on long text */
+  border-bottom: 1px solid #e9e6ff; /* subtle inner divider */
+}
+
+.tas-scope #wp-scrollbox .wp-table thead th {
+  background: #d9d0ff;           /* same lilac as TL;DR */
+  color: #222;
+  border-bottom: 1px solid var(--accent-color);
+}
+
+.tas-scope #wp-scrollbox .wp-table tbody tr:last-child td {
+  border-bottom: 0;               /* no divider after last row */
+}
+
+.tas-scope #wp-scrollbox .wp-table thead th {
+  white-space: normal !important;
+  overflow-wrap: anywhere;      /* modern */
+  word-break: break-word;       /* fallback for older browsers */
+  hyphens: auto;                /* optional, nicer breaks */
+}
+
+.tas-scope #wp-scrollbox .wp-table {
+  /* existing styles... */
+  /* change this: */
+  /* overflow: hidden; */
+  /* to this: */
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  min-width: 760px;   /* triggers horizontal scroll on small screens */
 }
