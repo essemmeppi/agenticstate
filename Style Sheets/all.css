@@ -161,7 +161,7 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .section__content { font-size: 1.2rem; font-weight: 150; line-height: 1.4; color: #333; }
 .section__content ul { list-style: disc; padding-left: 1.2rem; margin-bottom: 1.2rem; }
 .section__content li { margin-bottom: 0.6rem; }
-.section__link { color: var(--accent-color); hover: color: #8b7ae8;}
+.section__link { color: var(--accent-color); }
 .section__link:hover { color: #8b7ae8; text-decoration: underline; }
 strong, b { font-weight: 400; }
 
@@ -449,6 +449,16 @@ html { box-sizing: border-box; }
 .tas-scope #wp-navbar .dropdown-menu .dropdown-item {
     font-weight: 200;
   }
+
+@media (max-width: 768px) {
+  .tas-scope #wp-navbar .dropdown-menu {
+    width: calc(100vw - 3rem);
+  }
+
+  .tas-scope #wp-navbar .dropdown-menu .dropdown-item {
+    white-space: normal;
+  }
+}
   
 /* Whitepaper reader headings */
 .tas-scope #wp-scrollbox h1 {
