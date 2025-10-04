@@ -18,6 +18,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 html {
   font-size: 16px;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   --easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
   --easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
   --easeInOutExpo: cubic-bezier(1, 0, 0, 1);
@@ -27,7 +28,7 @@ html {
   --grid-gap: 1.5rem;
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 768px) {
   html { font-size: 20px; }
 }
 
@@ -103,14 +104,26 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 
 /* Site Modal (namespaced to avoid Bootstrap .modal) */
 .site-modal {
+  position: relative; 
+  visibility: hidden; 
+  top: -999em; 
+  left: -999em;
+  height: 0; 
+  width: 0; 
+  opacity: 0;
   background-color: var(--background);
-  position: relative; visibility: hidden; top: -999em; left: -999em;
-  height: 0; width: 0; opacity: 0; transition: opacity 150ms;
 }
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 768px) {
   .is-modal-open .site-modal {
-    z-index: 888; position: fixed; visibility: visible; top: 0; left: 0;
-    height: 100%; width: 100%; opacity: 1; overflow: auto;
+    z-index: 888; 
+    position: fixed; 
+    visibility: visible; 
+    top: 0; 
+    left: 0;
+    height: 100%; 
+    width: 100%; 
+    opacity: 1; 
+    overflow: auto;
   }
 }
 .site-modal .site-container {
@@ -145,6 +158,7 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .hero__title { font-size: 3rem; font-weight: 350; line-height: 1; margin-bottom: 2rem; max-width: 700px;   font-family: "Newsreader", Helvetica, sans-serif; font-style: italic;}
 .hero__mainsubtitle { font-size: 2rem; font-weight: 200; line-height: 1.4; margin-bottom: 3rem; max-width: 800px; color: var(--accent-color);}
 .hero__subtitle { font-size: 1.25rem; font-weight: 200; line-height: 1.4; margin-bottom: 3rem; max-width: 600px; }
+.hero__subtitle a:hover { text-decoration: underline; }
 
 @media only screen and (max-width: 768px) {
   .hero { padding: 1rem 0 6rem 0; text-align: left; }

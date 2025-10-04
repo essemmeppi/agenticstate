@@ -2,24 +2,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
   
-    // Mobile menu toggle
-    const modalToggle = document.querySelector('.modal-toggle');
-    if (modalToggle) {
-      modalToggle.addEventListener('click', function() {
-        body.classList.toggle('is-modal-open');
-      });
-    }
-  
-    // Close site-modal when clicking outside
-    document.addEventListener('click', function(e) {
-      if (
-        body.classList.contains('is-modal-open') &&
-        !e.target.closest('.site-modal') &&
-        !e.target.closest('.modal-toggle')
-      ) {
-        body.classList.remove('is-modal-open');
-      }
+  // Mobile menu toggle
+  const modalToggle = document.querySelector('.modal-toggle');
+  if (modalToggle) {
+    modalToggle.addEventListener('click', function() {
+      body.classList.toggle('is-modal-open');
     });
+  }
   
     // Scroll to top button (if you add one with class .up)
     const upButton = document.querySelector('.up');
