@@ -346,7 +346,8 @@ strong, b { font-weight: 400; }
 #wp-scrollbox {
   position: relative; /* required by Scrollspy when using a scroll container */
   max-height: calc(100dvh - 7rem); /* adjust if needed */
-  overflow: auto;
+  overflow-x: hidden; /* prevent horizontal scrolling of the entire paper */
+  overflow-y: auto;   /* allow vertical scrolling */
   scroll-behavior: smooth; /* progressive enhancement */
 }
 
@@ -356,8 +357,29 @@ strong, b { font-weight: 400; }
   padding-top: 1rem;
   border-bottom: 1px solid #eee;
   margin-bottom: 1.25rem;
+  max-width: 100%;              /* prevent section from exceeding container */
 }
 #wp-scrollbox section:last-child { border-bottom: 0; }
+
+/* Prevent all content from causing horizontal overflow */
+#wp-scrollbox * {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Exception for table wrappers - they need to scroll */
+#wp-scrollbox .table-wrapper,
+#wp-scrollbox .table-wrapper * {
+  max-width: none;
+}
+
+/* wp-note tables should always respect container width and wrap */
+#wp-scrollbox .wp-note,
+#wp-scrollbox .wp-note * {
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
 
 /* Optional: tidy the navbar on mobile */
 @media (max-width: 768px) {
@@ -505,6 +527,7 @@ html { box-sizing: border-box; }
 /* Blockquotes */
 .tas-scope #wp-scrollbox blockquote {
   border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
   padding: 0.75rem 1rem;
   margin: 1rem 0;
   background: #faf9ff;
@@ -522,45 +545,13 @@ html { box-sizing: border-box; }
   border-radius: 4px;
 }
 
-/* Tables: general fallback */
-.tas-scope #wp-scrollbox table {
+/* Table wrapper for horizontal scrolling */
+.tas-scope #wp-scrollbox .table-wrapper {
   width: 100%;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  overflow: hidden;            /* keeps rounded corners when scrolling */
-  margin: 1rem 0 2rem 0;
-  display: block;              /* allow horizontal scroll on small screens */
   overflow-x: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-}
-.tas-scope #wp-scrollbox thead th {
-  background: #f7f7fb;
-  text-align: left;
-  font-size: 0.9em; 
-  font-weight: 400;
-  white-space: nowrap;
-}
-.tas-scope #wp-scrollbox tbody td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #f0f0f0;
-}
-.tas-scope #wp-scrollbox tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-/* TL;DR card (table-as-callout) */
-.tas-scope #wp-scrollbox .wp-callout {
-  border-left: 6px solid var(--accent-color);
-  background: #faf9ff;
-}
-.tas-scope #wp-scrollbox .wp-callout thead th {
-  font-weight: 400;
-  padding-top: 1rem;
-}
-.tas-scope #wp-scrollbox .wp-callout tbody td {
-  font-style: italic;
-  color: #555;
-  padding-bottom: 1rem;
+  margin: 1rem 0 2rem 0;
 }
 
 /* Slightly larger H1 in reader for hierarchy */
@@ -568,18 +559,28 @@ html { box-sizing: border-box; }
 
 .tas-scope #wp-scrollbox .wp-note {
   width: 100%;
+  max-width: 100%;              /* prevent exceeding container */
   border: 1px solid var(--accent-color);   /* outer border uses accent */
   border-radius: 8px;
-  background: #fff;
   margin: 1rem 0 1.5rem;
+  table-layout: fixed;          /* fixed layout ensures text wraps */
+  border-collapse: separate;    /* needed for border-radius */
+  border-spacing: 0;
+}
+
+.tas-scope #wp-scrollbox .wp-note td {
+  padding: 0.75rem 1rem;
+  word-wrap: break-word;        /* wrap long words */
+  overflow-wrap: break-word;    /* modern wrapping */
+  hyphens: auto;                /* hyphenate if needed */
+  line-height: 1.65;            /* comfortable line height */
 }
 
 /* TL;DR row background */
 .tas-scope #wp-scrollbox .wp-note tr:first-child td {
   background: #d9d0ff;
   color: #222;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-radius: 8px;
 }
 
 .tas-scope #wp-scrollbox .wp-table {
@@ -590,7 +591,8 @@ html { box-sizing: border-box; }
   background: #fff;
   border-collapse: separate;
   border-spacing: 0;              /* no gaps between cells */
-  table-layout: fixed;            /* columns fill width; wraps nicely */
+  table-layout: auto;             /* allow columns to size based on content */
+  min-width: max-content;         /* table grows to fit content */
 }
 
 .tas-scope #wp-scrollbox .wp-table th,
@@ -598,42 +600,40 @@ html { box-sizing: border-box; }
   padding: 0.75rem 1rem;
   line-height: 1.5;
   text-align: left;
-  vertical-align: middle;
-  overflow-wrap: anywhere;        /* prevent overflow on long text */
+  vertical-align: top;            /* align content to top for multi-line cells */
+  overflow-wrap: anywhere;        /* wrap long words */
+  word-break: break-word;         /* break words if needed */
+  hyphens: auto;                  /* hyphenate long words */
   border-bottom: 1px solid #e9e6ff; /* subtle inner divider */
+  max-width: 300px;               /* maximum column width to encourage wrapping */
+  min-width: 80px;                /* minimum column width for very narrow screens */
 }
 
 .tas-scope #wp-scrollbox .wp-table thead th {
   background: #d9d0ff;           /* same lilac as TL;DR */
   color: #222;
   border-bottom: 1px solid var(--accent-color);
+  white-space: normal;           /* allow header text to wrap */
+  overflow-wrap: anywhere;       /* modern */
+  word-break: break-word;        /* fallback for older browsers */
+  hyphens: auto;     
+  font-weight: 350;            /* optional, nicer breaks */
 }
 
 .tas-scope #wp-scrollbox .wp-table tbody tr:last-child td {
   border-bottom: 0;               /* no divider after last row */
 }
 
-.tas-scope #wp-scrollbox .wp-table thead th {
-  white-space: normal !important;
-  overflow-wrap: anywhere;      /* modern */
-  word-break: break-word;       /* fallback for older browsers */
-  hyphens: auto;                /* optional, nicer breaks */
-}
-
-.tas-scope #wp-scrollbox .wp-table {
-  /* existing styles... */
-  /* change this: */
-  /* overflow: hidden; */
-  /* to this: */
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  min-width: 760px;   /* triggers horizontal scroll on small screens */
-}
-
 @media (max-width: 768px) {
   .tas-scope .btn {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
+  }
+
+  /* On mobile, reduce max column width to encourage more wrapping */
+  .tas-scope #wp-scrollbox .wp-table th,
+  .tas-scope #wp-scrollbox .wp-table td {
+    max-width: 200px;           /* smaller max width for mobile */
+    min-width: 60px;            /* smaller min width for mobile */
   }
 }
