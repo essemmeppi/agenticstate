@@ -631,10 +631,6 @@ html { box-sizing: border-box; }
   min-width: 760px;   /* triggers horizontal scroll on small screens */
 }
 
-.tas-scope .btn {
-  /* existing desktop values */
-}
-
 @media (max-width: 768px) {
   .tas-scope .btn {
     padding: 0.5rem 1rem;
