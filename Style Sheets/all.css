@@ -499,7 +499,7 @@ html { box-sizing: border-box; }
 /* Whitepaper reader headings */
 .tas-scope #wp-scrollbox h1 {
   font-weight: 350;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--accent-color);
   font-family: "Newsreader", Helvetica, sans-serif;
   font-style: italic;
@@ -508,11 +508,13 @@ html { box-sizing: border-box; }
 .tas-scope #wp-scrollbox h2 {
   font-size: 1.3rem;
   font-weight: 300;
+  margin-top: 3rem;
 }
 
 .tas-scope #wp-scrollbox h3 {
   font-style: italic;
   font-size: 1.1rem;
+  margin-top: 2rem;
 }
 
 /* ===== Whitepaper content tweaks (minimal) ===== */
