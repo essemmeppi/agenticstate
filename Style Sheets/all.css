@@ -178,6 +178,7 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .section__link { color: var(--accent-color); }
 .section__link:hover { color: #8b7ae8; text-decoration: underline; }
 strong, b { font-weight: 400; }
+em, i { font-style: italic; }
 
 .who-we-are p {
   font-size: 1.2rem;
