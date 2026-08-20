@@ -105,25 +105,25 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 
 /* Site Modal (namespaced to avoid Bootstrap .modal) */
 .site-modal {
-  position: relative; 
-  visibility: hidden; 
-  top: -999em; 
+  position: relative;
+  visibility: hidden;
+  top: -999em;
   left: -999em;
-  height: 0; 
-  width: 0; 
+  height: 0;
+  width: 0;
   opacity: 0;
   background-color: var(--background);
 }
 @media only screen and (max-width: 768px) {
   .is-modal-open .site-modal {
-    z-index: 888; 
-    position: fixed; 
-    visibility: visible; 
-    top: 0; 
+    z-index: 888;
+    position: fixed;
+    visibility: visible;
+    top: 0;
     left: 0;
-    height: 100%; 
-    width: 100%; 
-    opacity: 1; 
+    height: 100%;
+    width: 100%;
+    opacity: 1;
     overflow: auto;
   }
 }
@@ -148,6 +148,7 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .btn:hover { background-color: #8b7ae8; transform: translateY(-1px); }
 .btn--secondary { background-color: transparent; color: var(--accent-color); border: 2px solid var(--accent-color); }
 .btn--secondary:hover { background-color: var(--accent-color); color: white; }
+.project-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; margin-top: 1rem; }
 
 @media only screen and (max-width: 768px) {
   .btn { padding: 0.5rem 1rem; font-size: 0.8rem;}
@@ -353,7 +354,7 @@ em, i { font-style: italic; }
   background-color: #c9befd;
   border-color: #c9befd;
 }
-@media only screen and (max-width: 768px) { 
+@media only screen and (max-width: 768px) {
   .news-grid { grid-template-columns: 1fr; }
   .news-card__title { font-size: 1rem; }
 }
@@ -376,7 +377,7 @@ em, i { font-style: italic; }
 
 /* Layers list (legacy section—kept in case used elsewhere) */
 .layers-list { display: flex; flex-direction: column; }
-.layer-link { display: block; padding: 1rem 0; border-bottom: 1px solid #eee; color: #000; 
+.layer-link { display: block; padding: 1rem 0; border-bottom: 1px solid #eee; color: #000;
   text-decoration: none; font-size: 1.2rem; font-weight: 150; font-family: "Inter", Helvetica, sans-serif;
   line-height: 1.2; transition: color 0.2s ease; }
 .layer-link:hover { color: var(--accent-color); }
@@ -479,19 +480,19 @@ html { box-sizing: border-box; }
     text-decoration: none;
     border: none;
     border-radius: 40px;
-    font-family: "Newsreader", Helvetica, sans-serif; 
+    font-family: "Newsreader", Helvetica, sans-serif;
     font-style: italic;
     font-weight: 400;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
   }
-  
+
   .tas-scope .btn:hover {
     background-color: #8b7ae8;
     transform: translateY(-1px);
   }
-  
+
   .tas-scope .btn:focus,
   .tas-scope .btn:active,
   .tas-scope .btn.show {
@@ -500,19 +501,19 @@ html { box-sizing: border-box; }
     border-color: transparent;
     box-shadow: none;
   }
-  
+
   /* Secondary variant */
   .tas-scope .btn--secondary {
     background-color: transparent;
     color: var(--accent-color);
     border: 2px solid var(--accent-color);
   }
-  
+
   .tas-scope .btn--secondary:hover {
     background-color: var(--accent-color);
     color: #fff;
   }
-  
+
   .tas-scope .btn--secondary:focus,
   .tas-scope .btn--secondary:active,
   .tas-scope .btn--secondary.show {
@@ -544,7 +545,7 @@ html { box-sizing: border-box; }
     white-space: normal;
   }
 }
-  
+
 /* Whitepaper reader headings */
 .tas-scope #wp-scrollbox h1 {
   font-weight: 350;
@@ -681,7 +682,7 @@ html { box-sizing: border-box; }
   white-space: normal;           /* allow header text to wrap */
   overflow-wrap: anywhere;       /* modern */
   word-break: break-word;        /* fallback for older browsers */
-  hyphens: auto;     
+  hyphens: auto;
   font-weight: 350;            /* optional, nicer breaks */
 }
 
