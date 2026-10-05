@@ -160,7 +160,9 @@ hr { border: 0; height: 1px; background-color: var(--accent-color); margin-top: 
 .hero__maintitle { font-size: 5rem; font-weight: 350; line-height: 1; margin-bottom: 0.1rem; max-width: 700px;   font-family: "Newsreader", Helvetica, sans-serif; font-style: italic;}
 .hero__title { font-size: 3rem; font-weight: 350; line-height: 1; margin-bottom: 2rem; max-width: 700px;   font-family: "Newsreader", Helvetica, sans-serif; font-style: italic;}
 .hero__mainsubtitle { font-size: 2rem; font-weight: 200; line-height: 1.4; margin-bottom: 3rem; max-width: 800px; color: var(--accent-color);}
-.hero__subtitle { font-size: 1.25rem; font-weight: 200; line-height: 1.4; margin-bottom: 3rem; max-width: 600px; }
+.hero__subtitle { font-size: 1.25rem; font-weight: 200; line-height: 1.4; margin-bottom: 3rem; max-width: 600px; color: #777; }
+.hero__title:has(+ .hero__subtitle) { margin-bottom: 0.4em; }
+.hero__subtitle a { color: var(--accent-color); }
 .hero__subtitle a:hover { text-decoration: underline; }
 
 @media only screen and (max-width: 768px) {
