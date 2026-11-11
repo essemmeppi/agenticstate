@@ -28,6 +28,18 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   
+    // Landing page: header switches from accent to white once the hero is passed
+    const accentHero = document.querySelector('.lp-hero');
+    if (accentHero && body.classList.contains('has-accent-hero')) {
+      const updateHeader = function() {
+        const headerH = document.querySelector('.header').offsetHeight;
+        body.classList.toggle('is-past-hero', accentHero.getBoundingClientRect().bottom <= headerH);
+      };
+      window.addEventListener('scroll', updateHeader, { passive: true });
+      window.addEventListener('resize', updateHeader);
+      updateHeader();
+    }
+
     // ===== Whitepaper Reader: Bootstrap Scrollspy init =====
     const headerHeight = parseInt(getComputedStyle(document.documentElement)
       .getPropertyValue('--headerHeight')) || 64;
