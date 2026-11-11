@@ -738,8 +738,8 @@ html { box-sizing: border-box; }
 .has-accent-hero:not(.is-past-hero):not(.is-modal-open) .header__link:hover { color: #fff; opacity: 0.75; }
 
 /* Sections: whitespace instead of rules */
-.lp-section { margin-bottom: 7rem; }
-.lp-section--ruled { border-top: 1px solid #eee; padding-top: 2.5rem; }
+.lp-section { margin-bottom: 4.5rem; }
+.lp-section--ruled { border-top: 1px solid #eee; padding-top: 4.5rem; }
 .lp-section .grid { margin-bottom: 0; }
 .lp-section .grid + .lp-pillars { margin-top: 4rem; }
 .lp-label {
@@ -774,8 +774,8 @@ html { box-sizing: border-box; }
   .lp-hero__main { grid-column: span 1; }
   .lp-hero__title { font-size: 2.2rem; margin-bottom: 1rem; }
   .lp-hero__sub { font-size: 1.05rem; margin-bottom: 1.5rem; }
-  .lp-section { margin-bottom: 4rem; }
-  .lp-section--ruled { padding-top: 1.5rem; }
+  .lp-section { margin-bottom: 2.5rem; }
+  .lp-section--ruled { padding-top: 2.5rem; }
   .lp-section .grid > .grid-2:empty { display: none; }
   .lp-section .grid + .lp-pillars { margin-top: 2.5rem; }
   .lp-label { font-size: 0.6rem; }
