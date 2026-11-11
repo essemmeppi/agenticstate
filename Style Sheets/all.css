@@ -705,3 +705,69 @@ html { box-sizing: border-box; }
     min-width: 60px;            /* smaller min width for mobile */
   }
 }
+
+/* ===== Landing page (lp-) — editorial grid additions ===== */
+.lp-label {
+  font-size: 0.8rem; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #666; margin-bottom: 0.75rem; font-variant-numeric: tabular-nums;
+}
+.lp-hero .lp-label { margin-bottom: 1.5rem; }
+.lp-hero .hero__mainsubtitle { max-width: 760px; }
+.lp-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.lp-section { border-top: 1px solid #eee; padding-top: 2rem; }
+.lp-lead { font-size: 1.5rem; font-weight: 200; line-height: 1.4; color: #000; max-width: 760px; }
+.lp-body { font-size: 1.1rem; font-weight: 200; line-height: 1.5; color: #333; max-width: 760px; }
+
+/* Two failure modes */
+.lp-risk { border-top: 1px solid var(--accent-color); padding-top: 1rem; }
+.lp-risk p { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; margin-bottom: 0; }
+.lp-risk .lp-risk__index,
+.lp-pillar__index, .lp-pillar__name {
+  font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 350;
+  font-size: 1.5rem; line-height: 1.2; color: var(--accent-color); margin-bottom: 0.75rem;
+}
+.lp-pillar__name { color: #000; }
+
+/* Facts and figures */
+.lp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--grid-gap); }
+.lp-stat { border-left: 1px solid #eee; padding-left: 1rem; }
+.lp-stat:first-child { border-left: 0; padding-left: 0; }
+.lp-stat__num {
+  font-family: "Newsreader", Helvetica, sans-serif; font-weight: 300; font-size: 4rem; line-height: 1;
+  margin-bottom: 0.75rem; font-variant-numeric: lining-nums;
+}
+.lp-stat__text { font-size: 0.95rem; font-weight: 200; line-height: 1.4; color: #333; margin-bottom: 0; }
+
+/* Three columns: lines of work, team */
+.lp-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
+.lp-pillar { border-top: 1px solid #eee; padding-top: 1rem; }
+.lp-pillar__text { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; }
+.lp-pillar__list { border-top: 1px solid #eee; margin-top: 1rem; }
+.lp-pillar__list li { font-size: 0.95rem; font-weight: 200; line-height: 1.35; padding: 0.6rem 0; border-bottom: 1px solid #eee; color: #333; }
+.lp-pillar__list a { color: #000; transition: color 150ms; }
+.lp-pillar__list a:hover { color: var(--accent-color); }
+
+/* How we work */
+.lp-principles { margin-top: 1.5rem; border-top: 1px solid #eee; }
+.lp-principles p { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; padding: 1rem 0; margin: 0; border-bottom: 1px solid #eee; }
+.lp-principles__key { color: #000; font-weight: 300; }
+
+@media only screen and (max-width: 768px) {
+  .lp-lead { font-size: 1.1rem; }
+  .lp-body { font-size: 0.9rem; }
+  .lp-label { font-size: 0.6rem; }
+  .lp-risk p, .lp-pillar__text, .lp-principles p { font-size: 0.85rem; }
+  .lp-risk .lp-risk__index, .lp-pillar__index, .lp-pillar__name { font-size: 1.2rem; }
+  .lp-stats { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
+  .lp-stat:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .lp-stat__num { font-size: 2.5rem; }
+  .lp-stat__text { font-size: 0.8rem; }
+  .lp-pillars { grid-template-columns: 1fr; gap: 2rem; }
+  .lp-pillar__list li { font-size: 0.8rem; }
+}
+.lp-hero { padding-bottom: 9rem; }
+@media only screen and (max-width: 768px) { .lp-hero { padding-bottom: 4rem; } }
+@media only screen and (max-width: 768px) {
+  .lp-section .grid > .grid-2:empty { display: none; }
+  .lp-section .grid { margin-bottom: 2rem; }
+}
