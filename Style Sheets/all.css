@@ -706,95 +706,82 @@ html { box-sizing: border-box; }
   }
 }
 
-/* ===== Landing page (lp-) — editorial grid additions ===== */
-.lp-label {
-  font-size: 0.8rem; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase;
-  color: #666; margin-bottom: 0.75rem; font-variant-numeric: tabular-nums;
-}
-.lp-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-.lp-section { border-top: 1px solid #eee; padding-top: 2rem; margin-bottom: 4rem; }
-.lp-lead { font-size: 1.5rem; font-weight: 200; line-height: 1.4; color: #000; max-width: 760px; }
-.lp-body { font-size: 1.1rem; font-weight: 200; line-height: 1.5; color: #333; max-width: 760px; }
+/* ===== Landing page (lp-) ===== */
+.has-accent-hero .main { padding-top: 0; } /* hidden mobile modal already offsets content by one header height */
 
-/* Two failure modes */
-.lp-risk { border-top: 1px solid var(--accent-color); padding-top: 1rem; }
-.lp-risk p { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; margin-bottom: 0; }
-.lp-risk .lp-risk__index,
-.lp-pillar__index, .lp-pillar__name {
-  font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 350;
-  font-size: 1.5rem; line-height: 1.2; color: var(--accent-color); margin-bottom: 0.75rem;
-}
-.lp-pillar__name { color: #000; }
-
-/* Three columns: lines of work, team */
-.lp-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--grid-gap); }
-.lp-pillar { border-top: 1px solid #eee; padding-top: 1rem; }
-.lp-pillar__text { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; }
-.lp-pillar__list { border-top: 1px solid #eee; margin-top: 1rem; }
-.lp-pillar__list li { font-size: 0.95rem; font-weight: 200; line-height: 1.35; padding: 0.6rem 0; border-bottom: 1px solid #eee; color: #333; }
-.lp-pillar__list a { color: #000; transition: color 150ms; }
-.lp-pillar__list a:hover { color: var(--accent-color); }
-
-/* How we work */
-.lp-principles { margin-top: 1.5rem; border-top: 1px solid #eee; }
-.lp-principles p { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; padding: 1rem 0; margin: 0; border-bottom: 1px solid #eee; }
-.lp-principles__key { color: #000; font-weight: 300; }
-
-@media only screen and (max-width: 768px) {
-  .lp-lead { font-size: 1.1rem; }
-  .lp-body { font-size: 0.9rem; }
-  .lp-label { font-size: 0.6rem; }
-  .lp-risk p, .lp-pillar__text, .lp-principles p { font-size: 0.85rem; }
-  .lp-risk .lp-risk__index, .lp-pillar__index, .lp-pillar__name { font-size: 1.2rem; }
-  .lp-pillars { grid-template-columns: 1fr; gap: 2rem; }
-  .lp-pillar__list li { font-size: 0.8rem; }
-}
-@media only screen and (max-width: 768px) {
-  .lp-section .grid > .grid-2:empty { display: none; }
-  .lp-section .grid { margin-bottom: 2rem; }
-}
-
-/* ===== Landing hero: full-bleed accent, white page below ===== */
+/* Hero: full-bleed accent, full screen */
 .lp-hero {
-  position: relative; overflow: hidden;
   background-color: var(--accent-color); color: #fff;
-  min-height: 68vh; min-height: 68svh;
+  min-height: calc(100vh - var(--headerHeight)); min-height: calc(100svh - var(--headerHeight));
   display: flex; align-items: flex-end;
-  padding: 6rem 0 4rem; margin: 0 0 2rem;
+  padding: 6rem 0 5rem; margin: 0 0 9rem;
 }
-.lp-hero__inner { position: relative; width: 100%; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--grid-gap); align-items: end; }
+.lp-hero__inner { width: 100%; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--grid-gap); }
 .lp-hero__main { grid-column: span 5; }
 .lp-hero__title {
   font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 250;
   font-size: 4rem; line-height: 1.05; margin-bottom: 1.5rem; max-width: 760px; color: #fff;
 }
-.lp-hero__sub { font-size: 1.3rem; font-weight: 200; line-height: 1.4; max-width: 680px; margin-bottom: 2.5rem; color: #fff; }
+.lp-hero__sub { font-size: 1.4rem; font-weight: 200; line-height: 1.4; max-width: 680px; margin-bottom: 2.5rem; color: #fff; }
 
-/* Buttons on the accent surface */
 .btn--light { background-color: #fff; color: var(--accent-color); }
 .btn--light:hover { background-color: #f3f0ff; color: #8b7ae8; }
 .btn--light-outline { background-color: transparent; color: #fff; border: 2px solid #fff; }
 .btn--light-outline:hover { background-color: #fff; color: var(--accent-color); }
 
-/* Header sits on the accent until the hero is scrolled past */
+/* Header sits on the accent (no rule) until the hero is scrolled past */
 .has-accent-hero .header { transition: background-color 200ms ease, border-color 200ms ease; }
-.has-accent-hero:not(.is-past-hero):not(.is-modal-open) .header { background-color: var(--accent-color); border-bottom-color: rgba(255,255,255,0.35); }
+.has-accent-hero:not(.is-past-hero):not(.is-modal-open) .header { background-color: var(--accent-color); border-bottom-color: var(--accent-color); }
 .has-accent-hero:not(.is-past-hero):not(.is-modal-open) .header__link,
 .has-accent-hero:not(.is-past-hero):not(.is-modal-open) .header__logo,
 .has-accent-hero:not(.is-past-hero):not(.is-modal-open) .modal-toggle { color: #fff; }
 .has-accent-hero:not(.is-past-hero):not(.is-modal-open) .header__link:hover { color: #fff; opacity: 0.75; }
 
+/* Sections: whitespace instead of rules */
+.lp-section { margin-bottom: 9rem; }
+.lp-section .grid { margin-bottom: 0; }
+.lp-section .grid + .lp-pillars { margin-top: 4rem; }
+.lp-label {
+  font-size: 0.8rem; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase;
+  color: #666; margin-bottom: 0.75rem;
+}
+.lp-lead { font-size: 1.2rem; font-weight: 200; line-height: 1.5; color: #000; max-width: 760px; }
+.lp-body { font-size: 1.1rem; font-weight: 200; line-height: 1.55; color: #333; max-width: 760px; }
+.lp-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.lp-actions--spaced { margin-top: 2rem; }
+
+/* Three lines of work */
+.lp-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem var(--grid-gap); }
+.lp-pillar__index {
+  font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 350;
+  font-size: 1.5rem; line-height: 1.2; color: var(--accent-color); margin-bottom: 0.75rem;
+}
+.lp-pillar__text { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; margin-bottom: 1.25rem; }
+.lp-pillar__list li { font-size: 0.95rem; font-weight: 200; line-height: 1.35; padding: 0.3rem 0; color: #333; }
+.lp-pillar__list a { color: #000; transition: color 150ms; }
+.lp-pillar__list a::before { content: "\2192\00a0\00a0"; color: var(--accent-color); }
+.lp-pillar__list a:hover { color: var(--accent-color); }
+
+/* Supporters, inside the Vision Paper section */
+.lp-supporters { margin-top: 3.5rem; }
+.lp-supporters__logos { display: flex; flex-wrap: wrap; align-items: center; gap: 2.5rem; margin-top: 0.5rem; }
+.lp-supporters__logos img { height: 48px; width: auto; display: block; }
+
 @media only screen and (max-width: 768px) {
-  .lp-hero { min-height: 0; padding: 4rem 0 2.5rem; margin: 0 0 2rem; }
-  .lp-hero__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .lp-hero { padding: 3rem 0 2.5rem; margin-bottom: 5rem; }
+  .lp-hero__inner { grid-template-columns: 1fr; }
   .lp-hero__main { grid-column: span 1; }
   .lp-hero__title { font-size: 2.2rem; margin-bottom: 1rem; }
-  .lp-hero__sub { font-size: 1rem; margin-bottom: 1.5rem; }
-    }
-/* The hidden mobile modal already pushes content down by one header height,
-   so the accent hero needs no extra main padding to clear the fixed header. */
-.has-accent-hero .main { padding-top: 0; }
-.lp-section .grid:has(+ .lp-pillars) { margin-bottom: 1.5rem; }
-#why .grid { margin-bottom: 0; }
-.lp-actions--spaced { margin-top: 2rem; }
-#work .lp-body { margin-bottom: 0; }
+  .lp-hero__sub { font-size: 1.05rem; margin-bottom: 1.5rem; }
+  .lp-section { margin-bottom: 5rem; }
+  .lp-section .grid > .grid-2:empty { display: none; }
+  .lp-section .grid + .lp-pillars { margin-top: 2.5rem; }
+  .lp-label { font-size: 0.6rem; }
+  .lp-lead { font-size: 0.95rem; }
+  .lp-body { font-size: 0.9rem; }
+  .lp-pillar__index { font-size: 1.2rem; }
+  .lp-pillar__text { font-size: 0.85rem; }
+  .lp-pillar__list li { font-size: 0.8rem; }
+  .lp-pillars { grid-template-columns: 1fr; gap: 2.5rem; }
+  .lp-supporters__logos img { height: 36px; }
+}
