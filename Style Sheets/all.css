@@ -740,7 +740,7 @@ html { box-sizing: border-box; }
 .lp-hero__inner { width: 100%; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--grid-gap); }
 .lp-hero__main { grid-column: span 5; }
 .lp-hero__title {
-  font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 250;
+  font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 350;
   font-size: 4rem; line-height: 1.05; margin-bottom: 1.5rem; max-width: 760px; color: #fff;
 }
 .lp-hero__sub { font-size: 1.4rem; font-weight: 200; line-height: 1.4; max-width: 680px; margin-bottom: 2.5rem; color: #fff; }
@@ -862,3 +862,17 @@ html { box-sizing: border-box; }
 .hero--work .grid { margin-bottom: 0; }
 #projects.section:first-of-type, #projects { margin-top: 0; }
 @media only screen and (max-width: 768px) { .hero--work { padding-bottom: 1.5rem; } }
+
+/* Hero halftone, in the dotted style of the conference decks (drawn by Scripts/main.js) */
+.lp-hero__inner { position: relative; z-index: 1; }
+.lp-halftone {
+  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 42%, #000 68%);
+          mask-image: linear-gradient(to right, transparent 42%, #000 68%);
+}
+@media only screen and (max-width: 768px) {
+  .lp-halftone {
+    -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 62%);
+            mask-image: linear-gradient(to bottom, #000 35%, transparent 62%);
+  }
+}

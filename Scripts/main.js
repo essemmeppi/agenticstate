@@ -58,6 +58,86 @@ document.addEventListener('DOMContentLoaded', function() {
       window.addEventListener('hashchange', () => applyFilter(location.hash.slice(1)));
     }
 
+    // Landing hero: halftone sphere in white dots, with a slowly moving light
+    const halftone = document.querySelector('.lp-halftone');
+    if (halftone && halftone.getContext) {
+      const ctx = halftone.getContext('2d');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let W = 0, H = 0, dpr = 1, visible = true, last = 0;
+
+      // Small value-noise field for texture around the sphere
+      const perm = new Uint8Array(512);
+      for (let i = 0; i < 256; i++) perm[i] = i;
+      for (let i = 255; i > 0; i--) { const k = (i * 73 + 41) % (i + 1); const t = perm[i]; perm[i] = perm[k]; perm[k] = t; }
+      for (let i = 0; i < 256; i++) perm[i + 256] = perm[i];
+      const fade = t => t * t * (3 - 2 * t);
+      const hash = (x, y) => perm[(perm[x & 255] + y) & 255] / 255;
+      const noise = (x, y) => {
+        const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi;
+        const a = hash(xi, yi), b = hash(xi + 1, yi), c = hash(xi, yi + 1), d = hash(xi + 1, yi + 1);
+        const u = fade(xf), v = fade(yf);
+        return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
+      };
+
+      const resize = function() {
+        const r = halftone.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = r.width; H = r.height;
+        halftone.width = Math.round(W * dpr); halftone.height = Math.round(H * dpr);
+      };
+
+      const draw = function(t) {
+        const mobile = W < 769;
+        const step = mobile ? 8 : 10;
+        const cx = mobile ? W * 0.62 : W * 0.76;
+        const cy = mobile ? H * 0.26 : H * 0.42;
+        const R = mobile ? W * 0.36 : Math.min(W * 0.2, H * 0.34);
+        const a = t * 0.00012;                                 // light angle
+        const lx = Math.cos(a) * 0.6, ly = -0.45 + Math.sin(a) * 0.25, lz = 0.65;
+        const ll = Math.hypot(lx, ly, lz);
+        const drift = t * 0.00004;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.beginPath();
+        for (let y = step / 2; y < H; y += step) {
+          for (let x = step / 2; x < W; x += step) {
+            const dx = (x - cx) / R, dy = (y - cy) / R, d2 = dx * dx + dy * dy;
+            let v;
+            if (d2 < 1) {
+              const dz = Math.sqrt(1 - d2);
+              const lambert = Math.max(0, (dx * lx + dy * ly + dz * lz) / ll);
+              v = 0.08 + 0.92 * Math.pow(lambert, 1.4);
+              v *= 0.85 + 0.3 * noise(x / 46 + drift, y / 46);
+            } else {
+              const fall = Math.exp(-(Math.sqrt(d2) - 1) * 2.2);
+              v = fall * 0.32 * noise(x / 70 - drift, y / 70 + drift);
+            }
+            const rad = step * 0.5 * Math.min(1, v);
+            if (rad < 0.45) continue;
+            ctx.moveTo(x + rad, y);
+            ctx.arc(x, y, rad, 0, Math.PI * 2);
+          }
+        }
+        ctx.fill();
+      };
+
+      const loop = function(t) {
+        if (visible && t - last > 50) { draw(t); last = t; }
+        requestAnimationFrame(loop);
+      };
+
+      resize();
+      draw(0);
+      window.addEventListener('resize', () => { resize(); draw(last); });
+      if (!reduceMotion) {
+        if ('IntersectionObserver' in window) {
+          new IntersectionObserver(entries => { visible = entries[0].isIntersecting; }).observe(halftone);
+        }
+        requestAnimationFrame(loop);
+      }
+    }
+
     // ===== Whitepaper Reader: Bootstrap Scrollspy init =====
     const headerHeight = parseInt(getComputedStyle(document.documentElement)
       .getPropertyValue('--headerHeight')) || 64;
