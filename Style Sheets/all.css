@@ -714,7 +714,24 @@ html { box-sizing: border-box; }
   background-color: var(--accent-color); color: #fff;
   min-height: calc(100vh - var(--headerHeight)); min-height: calc(100svh - var(--headerHeight));
   display: flex; align-items: flex-end;
-  padding: 6rem 0 5rem; margin: 0 0 5rem;
+  padding: 6rem 0 5rem; margin: 0 0 19rem;
+  position: relative;
+}
+/* Accent dissolves into the white page below the hero */
+.lp-hero::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 16rem; pointer-events: none;
+  background: linear-gradient(to bottom,
+    rgba(164,145,252,1) 0%,
+    rgba(164,145,252,0.97) 10%,
+    rgba(164,145,252,0.9) 20%,
+    rgba(164,145,252,0.79) 30%,
+    rgba(164,145,252,0.65) 40%,
+    rgba(164,145,252,0.5) 50%,
+    rgba(164,145,252,0.35) 60%,
+    rgba(164,145,252,0.21) 70%,
+    rgba(164,145,252,0.1) 80%,
+    rgba(164,145,252,0.03) 90%,
+    rgba(164,145,252,0) 100%);
 }
 .lp-hero__inner { width: 100%; display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--grid-gap); }
 .lp-hero__main { grid-column: span 5; }
@@ -769,7 +786,8 @@ html { box-sizing: border-box; }
 .lp-supporters__logos img { height: 48px; width: auto; display: block; }
 
 @media only screen and (max-width: 768px) {
-  .lp-hero { padding: 3rem 0 2.5rem; margin-bottom: 3rem; }
+  .lp-hero { padding: 3rem 0 2.5rem; margin-bottom: 11rem; }
+  .lp-hero::after { height: 9rem; }
   .lp-hero__inner { grid-template-columns: 1fr; }
   .lp-hero__main { grid-column: span 1; }
   .lp-hero__title { font-size: 2.2rem; margin-bottom: 1rem; }
