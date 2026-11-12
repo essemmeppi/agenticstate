@@ -26,6 +26,9 @@ html {
   --siteMaxWidth: 1200px;
   --accent-color: #a491fc;
   --accent-light: #dbd3fe;
+  --c-research: #3836A6;
+  --c-government: #FF5F5A;
+  --c-field: #5CFBD7;
   --grid-gap: 1.5rem;
 }
 
@@ -286,7 +289,7 @@ em, i { font-style: italic; }
   display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--grid-gap);
   align-items: baseline; padding: 1.4rem 0; border-bottom: 1px solid #eee;
 }
-.project-row__date { grid-column: span 2; font-size: 0.9rem; font-weight: 300; color: #666; transition: color 0.2s ease; }
+.project-row__date { grid-column: span 1; font-size: 0.9rem; font-weight: 300; color: #666; transition: color 0.2s ease; }
 .project-row__title {
   grid-column: span 4; margin-bottom: 0;
   font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 350;
@@ -303,7 +306,8 @@ em, i { font-style: italic; }
 
 @media only screen and (max-width: 768px) {
   .project-row { grid-template-columns: 1fr; gap: 0.3rem; padding: 1.1rem 0; }
-  .project-row__date, .project-row__title { grid-column: span 1; }
+  .project-row__date, .project-row__title, .project-row__tags { grid-column: span 1; }
+  .project-row__tags { justify-content: flex-start; margin-top: 0.3rem; }
   .project-row__date { font-size: 0.75rem; }
   .project-row__title { font-size: 1.1rem; }
   .project-list__note { grid-template-columns: 1fr; padding: 1.1rem 0; }
@@ -806,3 +810,48 @@ html { box-sizing: border-box; }
   .lp-supporters__logos img { height: 36px; }
   .lp-supporters__logos { gap: 2.5rem; }
 }
+
+/* ===== Lines of work: tags, filters ===== */
+.tag {
+  display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap;
+  font-size: 0.75rem; font-weight: 300; color: #333; line-height: 1;
+}
+.tag::before, .work-filter__btn[class*="tag--"]::before, .lp-pillar__link::before {
+  content: ""; width: 0.55rem; height: 0.55rem; border-radius: 50%; flex: none; background: currentColor;
+}
+.tag--research::before, .work-filter__btn.tag--research::before, .lp-pillar__link--research::before { background: var(--c-research); }
+.tag--government::before, .work-filter__btn.tag--government::before, .lp-pillar__link--government::before { background: var(--c-government); }
+.tag--field::before, .work-filter__btn.tag--field::before, .lp-pillar__link--field::before { background: var(--c-field); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08); }
+.project-row__tags { grid-column: span 1; display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 0.5rem; }
+
+.work-filter { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.5rem; margin-bottom: 1.25rem; }
+.work-filter__btn {
+  display: inline-flex; align-items: center; gap: 0.45rem; cursor: pointer;
+  font-family: "Inter", Helvetica, sans-serif; font-size: 0.85rem; font-weight: 300; color: #333;
+  background: #fff; border: 1px solid #e6e6e6; border-radius: 40px; padding: 0.45rem 0.9rem;
+  transition: background-color 150ms, border-color 150ms;
+}
+.work-filter__btn:hover { border-color: #ccc; }
+.work-filter__btn.is-active { border-color: #000; color: #000; }
+.work-filter__btn.tag--research.is-active { background: rgba(56,54,166,0.08); border-color: var(--c-research); }
+.work-filter__btn.tag--government.is-active { background: rgba(255,95,90,0.1); border-color: var(--c-government); }
+.work-filter__btn.tag--field.is-active { background: rgba(92,251,215,0.22); border-color: #2fcfae; }
+.project-row.is-hidden { display: none; }
+
+.work-intro { max-width: 760px; color: #555; }
+.work-intro__key { color: #000; }
+
+/* Pillar titles on the landing page link to the filtered work page */
+.lp-pillar__link { display: inline-flex; align-items: center; gap: 0.6rem; color: inherit; }
+.lp-pillar__link::before { width: 0.6rem; height: 0.6rem; }
+.lp-pillar__link:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+
+@media only screen and (max-width: 768px) {
+  .work-filter { justify-content: flex-start; }
+  .work-filter__btn { font-size: 0.7rem; padding: 0.4rem 0.75rem; }
+  .tag { font-size: 0.6rem; }
+}
+.hero--work { padding-bottom: 3rem; }
+.hero--work .grid { margin-bottom: 0; }
+#projects.section:first-of-type, #projects { margin-top: 0; }
+@media only screen and (max-width: 768px) { .hero--work { padding-bottom: 1.5rem; } }

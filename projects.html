@@ -13,11 +13,11 @@
     <link rel="manifest" href="/favicon/site.webmanifest">
     <meta name="theme-color" content="#a491fc">
 
-    <title>The Agentic State - Projects</title>
+    <title>The Agentic State - Our Work</title>
     <meta name="description" content="Latest projects and updates from The Agentic State initiative." />
 
     <!-- Open Graph and Social Media Meta Tags -->
-    <meta property="og:title" content="The Agentic State - Projects" />
+    <meta property="og:title" content="The Agentic State - Our Work" />
     <meta property="og:description" content="Latest projects and updates from The Agentic State initiative." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://agenticstate.org/projects.html" />
@@ -31,7 +31,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@agenticstate_" />
     <meta name="twitter:creator" content="@agenticstate_" />
-    <meta name="twitter:title" content="The Agentic State - Projects" />
+    <meta name="twitter:title" content="The Agentic State - Our Work" />
     <meta name="twitter:description" content="Latest projects and updates from The Agentic State initiative." />
     <meta name="twitter:image" content="https://agenticstate.org/images/og-image-1200x630.jpg" />
     <meta name="twitter:image:alt" content="The Agentic State - Rethinking Government for the Era of Agentic AI" />
@@ -47,7 +47,7 @@
           <ul class="header__items">
             <li class="header__item"><a href="paper.html" class="header__link">Vision Paper</a></li>
             <li class="header__item"><a href="https://observatory.agenticstate.org/" class="header__link">Observatory</a></li>
-            <li class="header__item"><a href="projects.html" class="header__link">Projects</a></li>
+            <li class="header__item"><a href="projects.html" class="header__link">Our Work</a></li>
             <li class="header__item"><a href="contacts.html" class="header__link">Contact</a></li>
             <li class="header__item header__item--toggle">
               <div class="modal-toggle">
@@ -66,7 +66,7 @@
           <li class="site-modal__item"><a href="index.html" class="site-modal__link">Home</a></li>
           <li class="site-modal__item"><a href="paper.html" class="site-modal__link">Vision Paper</a></li>
           <li class="site-modal__item"><a href="https://observatory.agenticstate.org/" class="site-modal__link">Observatory</a></li>
-          <li class="site-modal__item"><a href="projects.html" class="site-modal__link">Projects</a></li>
+          <li class="site-modal__item"><a href="projects.html" class="site-modal__link">Our Work</a></li>
           <li class="site-modal__item"><a href="contacts.html" class="site-modal__link">Contact</a></li>
         </ul>
       </div>
@@ -74,14 +74,12 @@
 
     <main class="main">
       <!-- Hero Section -->
-      <section class="hero hero--compact">
+      <section class="hero hero--compact hero--work">
         <div class="site-container">
           <div class="grid">
             <div class="grid-6">
-              <h1 class="hero__title">Projects</h1>
-              <p class="hero__subtitle">The Agentic State supports governments to embrace agentic AI ambitiously and responsibly, moving from vision to action.<br><br>
-
-                <a href="#projects" style="color: var(--accent-color)">Here is what kept us busy lately.</a>
+              <h1 class="hero__title">Our Work</h1>
+              <p class="hero__subtitle work-intro">We prepare public institutions for transformative AI through three lines of work. <span class="work-intro__key work-intro__key--research">Research</span> develops the concepts and tools governments need to use AI without losing control of it. <span class="work-intro__key work-intro__key--government">Government engagements</span> put that work into practice with public institutions adopting and regulating AI agents. <span class="work-intro__key work-intro__key--field">Field building</span> makes institutional preparedness a priority for public leaders, and connects them with each other and with frontier researchers.</p>
             </div>
           </div>
         </div>
@@ -92,58 +90,77 @@
         <div class="site-container">
           <div class="grid">
             <div class="grid-6">
+              <div class="work-filter" role="group" aria-label="Filter by line of work">
+                <button type="button" class="work-filter__btn is-active" data-filter="all">All</button>
+                <button type="button" class="work-filter__btn tag--research" data-filter="research">Research</button>
+                <button type="button" class="work-filter__btn tag--government" data-filter="government">Government engagements</button>
+                <button type="button" class="work-filter__btn tag--field" data-filter="field">Field building</button>
+              </div>
               <div class="project-list">
-                <a class="project-row" href="projects/observatory-launch.html">
+                <a class="project-row" href="projects/observatory-launch.html" data-tags="field">
                   <div class="project-row__date">05.10.2026</div>
                   <div class="project-row__title">Launching the Observatory on the Agentic State</div>
+                  <div class="project-row__tags"><span class="tag tag--field">Field building</span></div>
                 </a>
-                <a class="project-row" href="projects/finland.html">
+                <a class="project-row" href="projects/finland.html" data-tags="government">
                   <div class="project-row__date">17.09.2026</div>
                   <div class="project-row__title">First Moves: A Finland-Specific Assessment of Agentic AI Potential</div>
+                  <div class="project-row__tags"><span class="tag tag--government">Government engagement</span></div>
                 </a>
-                <a class="project-row" href="projects/japan.html">
+                <a class="project-row" href="projects/japan.html" data-tags="field">
                   <div class="project-row__date">24.08.2026</div>
                   <div class="project-row__title">Towards an Agentic State in Japan</div>
+                  <div class="project-row__tags"><span class="tag tag--field">Field building</span></div>
                 </a>
-                <a class="project-row" href="projects/radar.html">
+                <a class="project-row" href="projects/radar.html" data-tags="research">
                   <div class="project-row__date">30.07.2026</div>
                   <div class="project-row__title">RADAR: Measuring How AI and Agents Reach Government Services</div>
+                  <div class="project-row__tags"><span class="tag tag--research">Research</span></div>
                 </a>
-                <a class="project-row" href="projects/state-ai-officers-summit.html">
+                <a class="project-row" href="projects/state-ai-officers-summit.html" data-tags="field">
                   <div class="project-row__date">10.07.2026</div>
                   <div class="project-row__title">The Agentic State at the US State AI Officers Summit</div>
+                  <div class="project-row__tags"><span class="tag tag--field">Field building</span></div>
                 </a>
-                <a class="project-row" href="projects/lawlab.html">
+                <a class="project-row" href="projects/lawlab.html" data-tags="research">
                   <div class="project-row__date">09.07.2026</div>
                   <div class="project-row__title">LawLab: our Agentic Watchdog for Legislation, featured on WIRED</div>
+                  <div class="project-row__tags"><span class="tag tag--research">Research</span></div>
                 </a>
-                <a class="project-row" href="projects/uae-agentic-ai.html">
+                <a class="project-row" href="projects/uae-agentic-ai.html" data-tags="government">
                   <div class="project-row__date">10.06.2026</div>
                   <div class="project-row__title">Agentic AI for the UAE Federal Government</div>
+                  <div class="project-row__tags"><span class="tag tag--government">Government engagement</span></div>
                 </a>
-                <a class="project-row" href="projects/70-functions.html">
+                <a class="project-row" href="projects/70-functions.html" data-tags="research">
                   <div class="project-row__date">29.04.2026</div>
                   <div class="project-row__title">Stop Starting with Ministries: Mapping the 70 Functions of Government</div>
+                  <div class="project-row__tags"><span class="tag tag--research">Research</span></div>
                 </a>
-                <a class="project-row" href="projects/what-holds-governments-back.html">
+                <a class="project-row" href="projects/what-holds-governments-back.html" data-tags="research">
                   <div class="project-row__date">21.04.2026</div>
                   <div class="project-row__title">What Is Holding Governments Back?</div>
+                  <div class="project-row__tags"><span class="tag tag--research">Research</span></div>
                 </a>
-                <a class="project-row" href="projects/italy.html">
+                <a class="project-row" href="projects/italy.html" data-tags="field">
                   <div class="project-row__date">15.04.2026</div>
                   <div class="project-row__title">Italy: Building the &ldquo;Stato Agentico&rdquo;</div>
+                  <div class="project-row__tags"><span class="tag tag--field">Field building</span></div>
                 </a>
-                <a class="project-row" href="projects/ukraine-roadmap.html">
+                <a class="project-row" href="projects/ukraine-roadmap.html" data-tags="government">
                   <div class="project-row__date">22.03.2026</div>
                   <div class="project-row__title">Building the Agentic State in Ukraine: Roadmap from Vision to Implementation</div>
+                  <div class="project-row__tags"><span class="tag tag--government">Government engagement</span></div>
                 </a>
-                <a class="project-row" href="projects/helsinki-keynote.html">
+                <a class="project-row" href="projects/helsinki-keynote.html" data-tags="field">
                   <div class="project-row__date">03.11.2025</div>
                   <div class="project-row__title">AI-Driven Bureaucracy Is Possible: Keynote in Helsinki</div>
+                  <div class="project-row__tags"><span class="tag tag--field">Field building</span></div>
                 </a>
-                <a class="project-row" href="projects/agenticstate-intro.html">
+                <a class="project-row" href="projects/agenticstate-intro.html" data-tags="research">
                   <div class="project-row__date">09.10.2025</div>
                   <div class="project-row__title">Launch of the Vision Paper at Tallinn Digital Summit 2025</div>
+                  <div class="project-row__tags"><span class="tag tag--research">Research</span></div>
                 </a>
                 <div class="project-list__note">
                   <p>Want to follow our progress towards the Agentic State? Follow us on <a href="https://www.linkedin.com/company/the-agentic-state/" target="_blank" rel="noopener">LinkedIn</a> and join the <a href="https://forms.gle/G6WcXEXRprpanzzV7" target="_blank" rel="noopener">mailing list</a>.</p>
@@ -154,18 +171,18 @@
         </div>
       </section>
 
-      <!-- Stay Connected Section -->
+      <!-- Support / partner -->
       <section class="stay-connected">
         <div class="site-container">
           <div class="stay-connected__content">
             <div>
-              <h2 class="stay-connected__title">Be part of the journey</h2>
+              <h2 class="stay-connected__title">Support our work</h2>
             </div>
             <div class="stay-connected__description">
-              <p>Do you have a question, idea, or collaboration in mind?<br><br>Write to us at <a href="mailto:hello@agenticstate.org" class="stay-connected__link">hello@agenticstate.org</a>.</p>
+              <p>The Agentic State is an independent nonprofit. We set our own agenda and publish what we learn. We welcome funders, research partners and governments.<br><br>Write to us at <a href="mailto:hello@agenticstate.org" class="stay-connected__link">hello@agenticstate.org</a>.</p>
             </div>
             <div class="stay-connected__cta">
-              <p>Not ready to chat yet? Join our mailing list and we’ll keep you in the loop.</p>
+              <p>Not ready to chat yet? Join our mailing list and we&rsquo;ll keep you in the loop.</p>
               <a href="https://forms.gle/G6WcXEXRprpanzzV7" class="btn" target="_blank" rel="noopener">Join the mailing list</a>
             </div>
           </div>
