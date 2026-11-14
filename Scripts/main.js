@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }, { passive: true });
       document.documentElement.addEventListener('mouseleave', () => { pointer = null; });
       const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+      let following = false;
 
       // Small value-noise field for texture around the sphere
       const perm = new Uint8Array(512);
@@ -106,17 +107,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const cy = mobile ? H * 0.26 : H * 0.42;
         const R = mobile ? W * 0.36 : Math.min(W * 0.2, H * 0.34);
         const a = t * 0.0004;                                  // light angle: one turn in about 16s
-        let tx = Math.cos(a) * 0.6, ty = -0.45 + Math.sin(a) * 0.25;
+        let tx = Math.cos(a) * 0.6, ty = -0.45 + Math.sin(a) * 0.25, followingNow = false;
         if (pointer && !mobile && finePointer.matches && performance.now() - pointerAt < 4000) {
           const hr = hero ? hero.getBoundingClientRect() : null;
           if (hr && pointer.y >= hr.top && pointer.y <= hr.bottom) {
             const cr = halftone.getBoundingClientRect();
             tx = clamp((pointer.x - (cr.left + cx)) / (W * 0.35), -0.75, 0.75);
             ty = clamp((pointer.y - (cr.top + cy)) / (H * 0.45), -0.7, 0.4);
+            followingNow = true;
           }
         }
-        lightX += (tx - lightX) * 0.12;                        // ease, so the light lags slightly
-        lightY += (ty - lightY) * 0.12;
+        following = followingNow;
+        lightX += (tx - lightX) * (followingNow ? 0.3 : 0.12); // ease: quick towards the mouse, gentle back to circling
+        lightY += (ty - lightY) * (followingNow ? 0.3 : 0.12);
         const lx = lightX, ly = lightY, lz = 0.65;
         const ll = Math.hypot(lx, ly, lz);
         const drift = t * 0.0001;
@@ -147,7 +150,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
 
       const loop = function(t) {
-        if (visible && t - last > 50) { draw(t); last = t; }
+        if (visible && t - last > (following ? 0 : 50)) { draw(t); last = t; }   // every frame while following the mouse
         requestAnimationFrame(loop);
       };
 
