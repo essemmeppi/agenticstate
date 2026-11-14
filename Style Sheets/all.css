@@ -864,16 +864,21 @@ html { box-sizing: border-box; }
 @media only screen and (max-width: 768px) { .hero--work { padding-bottom: 1.5rem; } }
 
 /* Hero halftone, in the dotted style of the conference decks (drawn by Scripts/main.js) */
-.lp-hero__inner { position: relative; z-index: 1; }
+.lp-hero__inner { position: relative; z-index: 2; }
+.lp-hero::after { z-index: 0; }
+.lp-halftone.is-gone { visibility: hidden; }
+.has-accent-hero .lp-section { position: relative; z-index: 2; }
 .lp-halftone {
-  /* covers the hero and the fade below it, so the sphere can sink into the fade */
-  position: absolute; top: 0; left: 0; width: 100%; height: calc(100% + 16rem); z-index: 0; pointer-events: none;
+  /* fixed to the viewport: the page scrolls past it without redrawing; the white
+     sections below pass behind the white dots, and text stays on top (z-index 2) */
+  position: fixed; top: var(--headerHeight); left: 0; width: 100%;
+  height: calc(100vh - var(--headerHeight)); height: calc(100lvh - var(--headerHeight));
+  z-index: 1; pointer-events: none;
   -webkit-mask-image: linear-gradient(to right, transparent 42%, #000 68%);
           mask-image: linear-gradient(to right, transparent 42%, #000 68%);
 }
 @media only screen and (max-width: 768px) {
   .lp-halftone {
-    height: calc(100% + 9rem);
     -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 62%);
             mask-image: linear-gradient(to bottom, #000 35%, transparent 62%);
   }
