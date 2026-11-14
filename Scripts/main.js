@@ -66,6 +66,18 @@ document.addEventListener('DOMContentLoaded', function() {
       const hero = halftone.closest('.lp-hero');
       let W = 0, H = 0, dpr = 1, visible = true, last = 0;
 
+      // Light direction: circles on its own; on large screens with a mouse it eases
+      // towards the pointer while the pointer is over the hero, and goes back to
+      // circling when the pointer leaves the hero or rests for a few seconds.
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+      let lightX = 0.6, lightY = -0.45, pointer = null, pointerAt = 0;
+      window.addEventListener('pointermove', function(e) {
+        if (e.pointerType !== 'mouse') return;
+        pointer = { x: e.clientX, y: e.clientY }; pointerAt = performance.now();
+      }, { passive: true });
+      document.documentElement.addEventListener('mouseleave', () => { pointer = null; });
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
       // Small value-noise field for texture around the sphere
       const perm = new Uint8Array(512);
       for (let i = 0; i < 256; i++) perm[i] = i;
@@ -94,7 +106,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const cy = mobile ? H * 0.26 : H * 0.42;
         const R = mobile ? W * 0.36 : Math.min(W * 0.2, H * 0.34);
         const a = t * 0.0004;                                  // light angle: one turn in about 16s
-        const lx = Math.cos(a) * 0.6, ly = -0.45 + Math.sin(a) * 0.25, lz = 0.65;
+        let tx = Math.cos(a) * 0.6, ty = -0.45 + Math.sin(a) * 0.25;
+        if (pointer && !mobile && finePointer.matches && performance.now() - pointerAt < 4000) {
+          const hr = hero ? hero.getBoundingClientRect() : null;
+          if (hr && pointer.y >= hr.top && pointer.y <= hr.bottom) {
+            const cr = halftone.getBoundingClientRect();
+            tx = clamp((pointer.x - (cr.left + cx)) / (W * 0.35), -0.75, 0.75);
+            ty = clamp((pointer.y - (cr.top + cy)) / (H * 0.45), -0.7, 0.4);
+          }
+        }
+        lightX += (tx - lightX) * 0.12;                        // ease, so the light lags slightly
+        lightY += (ty - lightY) * 0.12;
+        const lx = lightX, ly = lightY, lz = 0.65;
         const ll = Math.hypot(lx, ly, lz);
         const drift = t * 0.0001;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
