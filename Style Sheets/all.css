@@ -866,12 +866,14 @@ html { box-sizing: border-box; }
 /* Hero halftone, in the dotted style of the conference decks (drawn by Scripts/main.js) */
 .lp-hero__inner { position: relative; z-index: 1; }
 .lp-halftone {
-  position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;
+  /* covers the hero and the fade below it, so the sphere can sink into the fade */
+  position: absolute; top: 0; left: 0; width: 100%; height: calc(100% + 16rem); z-index: 0; pointer-events: none;
   -webkit-mask-image: linear-gradient(to right, transparent 42%, #000 68%);
           mask-image: linear-gradient(to right, transparent 42%, #000 68%);
 }
 @media only screen and (max-width: 768px) {
   .lp-halftone {
+    height: calc(100% + 9rem);
     -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 62%);
             mask-image: linear-gradient(to bottom, #000 35%, transparent 62%);
   }

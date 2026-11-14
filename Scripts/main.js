@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (halftone && halftone.getContext) {
       const ctx = halftone.getContext('2d');
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      let W = 0, H = 0, dpr = 1, visible = true, last = 0;
+      const hero = halftone.closest('.lp-hero');
+      let W = 0, H = 0, heroH = 0, dpr = 1, visible = true, last = 0, scrolled = true;
 
       // Small value-noise field for texture around the sphere
       const perm = new Uint8Array(512);
@@ -82,23 +83,28 @@ document.addEventListener('DOMContentLoaded', function() {
       const resize = function() {
         const r = halftone.getBoundingClientRect();
         dpr = Math.min(window.devicePixelRatio || 1, 2);
-        W = r.width; H = r.height;
+        W = r.width; H = r.height; heroH = hero ? hero.offsetHeight : H;
         halftone.width = Math.round(W * dpr); halftone.height = Math.round(H * dpr);
       };
 
       const draw = function(t) {
         const mobile = W < 769;
         const step = mobile ? 8 : 10;
+        // Keep the sphere fixed in the viewport while the hero scrolls away;
+        // it slides into the fade below the hero and dissolves into the white page
+        const sy = Math.max(0, Math.min(window.scrollY, H));
         const cx = mobile ? W * 0.62 : W * 0.76;
-        const cy = mobile ? H * 0.26 : H * 0.42;
-        const R = mobile ? W * 0.36 : Math.min(W * 0.2, H * 0.34);
-        const a = t * 0.00012;                                 // light angle
+        const cy = (mobile ? heroH * 0.26 : heroH * 0.42) + sy;
+        const R = mobile ? W * 0.36 : Math.min(W * 0.2, heroH * 0.34);
+        const alpha = 0.9 * Math.max(0, 1 - sy / (heroH * 0.85));
+        const a = t * 0.0004;                                  // light angle: one turn in about 16s
         const lx = Math.cos(a) * 0.6, ly = -0.45 + Math.sin(a) * 0.25, lz = 0.65;
         const ll = Math.hypot(lx, ly, lz);
-        const drift = t * 0.00004;
+        const drift = t * 0.0001;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        if (alpha <= 0) return;
+        ctx.fillStyle = 'rgba(255,255,255,' + alpha.toFixed(3) + ')';
         ctx.beginPath();
         for (let y = step / 2; y < H; y += step) {
           for (let x = step / 2; x < W; x += step) {
@@ -123,19 +129,18 @@ document.addEventListener('DOMContentLoaded', function() {
       };
 
       const loop = function(t) {
-        if (visible && t - last > 50) { draw(t); last = t; }
+        if (visible && (scrolled || (!reduceMotion && t - last > 50))) { draw(reduceMotion ? 0 : t); last = t; scrolled = false; }
         requestAnimationFrame(loop);
       };
 
       resize();
       draw(0);
-      window.addEventListener('resize', () => { resize(); draw(last); });
-      if (!reduceMotion) {
-        if ('IntersectionObserver' in window) {
-          new IntersectionObserver(entries => { visible = entries[0].isIntersecting; }).observe(halftone);
-        }
-        requestAnimationFrame(loop);
+      window.addEventListener('resize', () => { resize(); draw(reduceMotion ? 0 : last); });
+      window.addEventListener('scroll', () => { scrolled = true; }, { passive: true });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(entries => { visible = entries[0].isIntersecting; }).observe(halftone);
       }
+      requestAnimationFrame(loop);
     }
 
     // ===== Whitepaper Reader: Bootstrap Scrollspy init =====
