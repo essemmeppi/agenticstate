@@ -28,36 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   
-    // Landing page: header switches from accent to white once the hero is passed
-    const accentHero = document.querySelector('.lp-hero');
-    if (accentHero && body.classList.contains('has-accent-hero')) {
-      const updateHeader = function() {
-        const headerH = document.querySelector('.header').offsetHeight;
-        body.classList.toggle('is-past-hero', accentHero.getBoundingClientRect().bottom <= headerH);
-      };
-      window.addEventListener('scroll', updateHeader, { passive: true });
-      window.addEventListener('resize', updateHeader);
-      updateHeader();
-    }
-
-    // Our Work page: filter project rows by line of work (#research, #government, #field)
-    const filterButtons = document.querySelectorAll('.work-filter__btn');
-    if (filterButtons.length) {
-      const rows = document.querySelectorAll('.project-row[data-tags]');
-      const applyFilter = function(key) {
-        if (!['research', 'government', 'field'].includes(key)) key = 'all';
-        filterButtons.forEach(b => b.classList.toggle('is-active', b.dataset.filter === key));
-        rows.forEach(r => r.classList.toggle('is-hidden', key !== 'all' && !r.dataset.tags.split(' ').includes(key)));
-      };
-      filterButtons.forEach(b => b.addEventListener('click', function() {
-        const key = b.dataset.filter;
-        history.replaceState(null, '', key === 'all' ? location.pathname : '#' + key);
-        applyFilter(key);
-      }));
-      applyFilter(location.hash.slice(1));
-      window.addEventListener('hashchange', () => applyFilter(location.hash.slice(1)));
-    }
-
     // ===== Whitepaper Reader: Bootstrap Scrollspy init =====
     const headerHeight = parseInt(getComputedStyle(document.documentElement)
       .getPropertyValue('--headerHeight')) || 64;
