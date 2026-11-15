@@ -775,8 +775,8 @@ html { box-sizing: border-box; }
 /* Three lines of work */
 .lp-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem var(--grid-gap); }
 .lp-pillar__index {
-  font-family: "Inter", Helvetica, sans-serif; font-weight: 300;
-  font-size: 1.3rem; line-height: 1.25; color: var(--accent-color); margin-bottom: 0.75rem;
+  font-family: "Inter", Helvetica, sans-serif; font-weight: 400;
+  font-size: 1.05rem; line-height: 1.3; color: var(--accent-color); margin-bottom: 0.5rem;
 }
 .lp-pillar__text { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; margin-bottom: 1.25rem; max-width: 85%; text-wrap: balance; }
 .lp-pillar__list { border-top: 1px solid #eee; }
@@ -803,7 +803,7 @@ html { box-sizing: border-box; }
   .lp-label { font-size: 0.6rem; }
   .lp-lead { font-size: 0.95rem; }
   .lp-body { font-size: 0.95rem; }
-  .lp-pillar__index { font-size: 1.2rem; }
+  .lp-pillar__index { font-size: 0.9rem; }
   .lp-pillar__text { font-size: 0.85rem; }
   .lp-pillar__list li { font-size: 0.8rem; }
   .lp-pillars { grid-template-columns: 1fr; gap: 2.5rem; }
