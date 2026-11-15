@@ -548,6 +548,9 @@ html { box-sizing: border-box; }
   }
   .tas-scope #wp-navbar .nav-link.dropdown-toggle:hover { border-color: #ccc; color: #000; }
   .tas-scope #wp-navbar .nav-link.dropdown-toggle.show { border-color: #000; }
+  /* no Bootstrap blue focus ring; keyboard users get a lilac outline instead */
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle:focus { box-shadow: none; outline: none; }
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
 /* Whitepaper chapter dropdown items thinner */
 .tas-scope #wp-navbar .dropdown-menu .dropdown-item {
@@ -555,7 +558,9 @@ html { box-sizing: border-box; }
   }
 
 @media (max-width: 768px) {
-  .tas-scope #wp-navbar .nav-link.dropdown-toggle { font-size: 0.75rem; padding: 0.4rem 0.85rem; }
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle,
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle.active,
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle.show { font-size: 0.75rem; padding: 0.4rem 0.85rem; }
   .tas-scope #wp-navbar .dropdown-menu {
     width: calc(100vw - 3rem);
   }
