@@ -857,10 +857,12 @@ html { box-sizing: border-box; }
   .work-filter__btn { font-size: 0.7rem; padding: 0.4rem 0.75rem; }
   .tag { font-size: 0.6rem; }
 }
-.hero--work { padding-bottom: 3rem; }
-.hero--work .grid { margin-bottom: 0; }
+/* Page titles: same gap to the content on Our Work, project pages, the Vision Paper and other pages */
+.hero--compact { padding-bottom: 3rem; }
+.hero--compact .grid { margin-bottom: 0; }
+.hero--compact .grid-6 > :last-child, .hero--compact .site-container > :last-child:not(.grid) { margin-bottom: 3rem; } /* buttons get the same gap as a subtitle */
 #projects.section:first-of-type, #projects { margin-top: 0; }
-@media only screen and (max-width: 768px) { .hero--work { padding-bottom: 1.5rem; } }
+@media only screen and (max-width: 768px) { .hero--compact { padding-bottom: 1.5rem; } .hero--compact .grid-6 > :last-child, .hero--compact .site-container > :last-child:not(.grid) { margin-bottom: 2rem; } }
 
 /* Hero: "Latest" column on the right */
 .lp-hero__inner { align-items: start; }
@@ -884,3 +886,7 @@ html { box-sizing: border-box; }
   .lp-latest__more { font-size: 0.75rem; }
 }
 @media only screen and (max-width: 768px) { .lp-pillar__text { max-width: none; } .lp-latest { padding-top: 0; } }
+
+/* Dates on project pages, in the style of the Our Work list */
+.project-date { font-family: "Inter", Helvetica, sans-serif; font-style: normal; font-size: 0.9rem; font-weight: 300; color: #666; padding-top: 0.35rem; font-variant-numeric: tabular-nums; }
+@media only screen and (max-width: 768px) { .project-date { font-size: 0.75rem; padding-top: 0; margin-bottom: 0.5rem; } }
