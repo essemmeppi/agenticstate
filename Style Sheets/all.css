@@ -529,13 +529,25 @@ html { box-sizing: border-box; }
     box-shadow: none;
   }
 
-  .tas-scope #wp-navbar .nav-link.dropdown-toggle {
+  /* Chapter menu toggle: an Inter pill like the Our Work filters, the same in every state
+     (overrides Bootstrap's blue link colour and the scrollspy "active" fill) */
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle,
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle.active,
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle.show {
+    display: inline-flex; align-items: center; gap: 0.5rem;
     border-radius: 40px;
-    font-family: "Newsreader", Helvetica, sans-serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1rem;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    color: #000;
+    font-family: "Inter", Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 300 !important;
+    font-size: 0.9rem;
+    padding: 0.45rem 1rem;
+    transition: border-color 150ms;
   }
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle:hover { border-color: #ccc; color: #000; }
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle.show { border-color: #000; }
 
 /* Whitepaper chapter dropdown items thinner */
 .tas-scope #wp-navbar .dropdown-menu .dropdown-item {
@@ -543,6 +555,7 @@ html { box-sizing: border-box; }
   }
 
 @media (max-width: 768px) {
+  .tas-scope #wp-navbar .nav-link.dropdown-toggle { font-size: 0.75rem; padding: 0.4rem 0.85rem; }
   .tas-scope #wp-navbar .dropdown-menu {
     width: calc(100vw - 3rem);
   }
