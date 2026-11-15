@@ -841,7 +841,8 @@ html { box-sizing: border-box; }
 .project-row.is-hidden { display: none; }
 
 .work-intro { max-width: 760px; color: #555; }
-.work-intro__key { color: #000; }
+.work-intro .work-intro__key { color: #000; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; text-decoration-color: #ccc; }
+.work-intro .work-intro__key:hover { color: #000; text-decoration-color: currentColor; }
 
 /* Pillar titles on the landing page link to the filtered work page */
 .lp-pillar__link {
