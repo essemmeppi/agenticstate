@@ -863,23 +863,23 @@ html { box-sizing: border-box; }
 #projects.section:first-of-type, #projects { margin-top: 0; }
 @media only screen and (max-width: 768px) { .hero--work { padding-bottom: 1.5rem; } }
 
-/* Hero halftone, in the dotted style of the conference decks (drawn by Scripts/main.js) */
-.lp-hero__inner { position: relative; z-index: 2; }
-.lp-hero::after { z-index: 0; }
-.lp-halftone.is-gone { visibility: hidden; }
-.has-accent-hero .lp-section { position: relative; z-index: 2; }
-.lp-halftone {
-  /* fixed to the viewport: the page scrolls past it without redrawing; the white
-     sections below pass behind the white dots, and text stays on top (z-index 2) */
-  position: fixed; top: var(--headerHeight); left: 0; width: 100%;
-  height: calc(100vh - var(--headerHeight)); height: calc(100lvh - var(--headerHeight));
-  z-index: 1; pointer-events: none;
-  -webkit-mask-image: linear-gradient(to right, transparent 42%, #000 68%);
-          mask-image: linear-gradient(to right, transparent 42%, #000 68%);
+/* Hero: "Latest" column on the right */
+.lp-hero__inner { align-items: end; }
+.lp-hero__main { grid-column: span 4; }
+.lp-latest { grid-column: 5 / span 2; }
+.lp-latest .lp-label { color: rgba(255,255,255,0.8); }
+.lp-latest__item { display: block; padding: 0.9rem 0; border-top: 1px solid rgba(255,255,255,0.45); }
+.lp-latest__title {
+  display: block; font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 350;
+  font-size: 1.3rem; line-height: 1.2; color: #fff; transition: opacity 150ms;
 }
+.lp-latest__date { display: block; margin-top: 0.3rem; font-size: 0.8rem; font-weight: 200; color: rgba(255,255,255,0.8); }
+.lp-latest__item:hover .lp-latest__title { opacity: 0.75; }
+.lp-latest__more { display: inline-block; margin-top: 0.75rem; font-size: 0.9rem; color: #fff; text-decoration: underline; text-underline-offset: 4px; }
 @media only screen and (max-width: 768px) {
-  .lp-halftone {
-    -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 62%);
-            mask-image: linear-gradient(to bottom, #000 35%, transparent 62%);
-  }
+  .lp-hero__inner { gap: 3rem; }
+  .lp-hero__main, .lp-latest { grid-column: span 1; }
+  .lp-latest__title { font-size: 1rem; }
+  .lp-latest__date { font-size: 0.65rem; }
+  .lp-latest__more { font-size: 0.75rem; }
 }
