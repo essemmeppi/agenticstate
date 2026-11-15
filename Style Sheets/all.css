@@ -775,10 +775,10 @@ html { box-sizing: border-box; }
 /* Three lines of work */
 .lp-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem var(--grid-gap); }
 .lp-pillar__index {
-  font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 350;
-  font-size: 1.5rem; line-height: 1.2; color: var(--accent-color); margin-bottom: 0.75rem;
+  font-family: "Inter", Helvetica, sans-serif; font-weight: 300;
+  font-size: 1.3rem; line-height: 1.25; color: var(--accent-color); margin-bottom: 0.75rem;
 }
-.lp-pillar__text { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; margin-bottom: 1.25rem; }
+.lp-pillar__text { font-size: 1rem; font-weight: 200; line-height: 1.5; color: #333; margin-bottom: 1.25rem; max-width: 85%; text-wrap: balance; }
 .lp-pillar__list { border-top: 1px solid #eee; }
 .lp-pillar__list li { font-size: 0.95rem; font-weight: 200; line-height: 1.35; padding: 0.6rem 0; border-bottom: 1px solid #eee; color: #333; }
 .lp-pillar__list a { color: #000; transition: color 150ms; }
@@ -864,14 +864,15 @@ html { box-sizing: border-box; }
 @media only screen and (max-width: 768px) { .hero--work { padding-bottom: 1.5rem; } }
 
 /* Hero: "Latest" column on the right */
-.lp-hero__inner { align-items: end; }
+.lp-hero__inner { align-items: start; }
+.lp-latest { padding-top: 0.55rem; } /* lines the label up with the top of the headline */
 .lp-hero__main { grid-column: span 4; }
 .lp-latest { grid-column: 5 / span 2; }
 .lp-latest .lp-label { color: rgba(255,255,255,0.8); }
 .lp-latest__item { display: block; padding: 0.9rem 0; border-top: 1px solid rgba(255,255,255,0.45); }
 .lp-latest__title {
-  display: block; font-family: "Newsreader", Helvetica, sans-serif; font-style: italic; font-weight: 350;
-  font-size: 1.3rem; line-height: 1.2; color: #fff; transition: opacity 150ms;
+  display: block; font-family: "Inter", Helvetica, sans-serif; font-weight: 300;
+  font-size: 1.05rem; line-height: 1.35; color: #fff; transition: opacity 150ms;
 }
 .lp-latest__date { display: block; margin-top: 0.3rem; font-size: 0.8rem; font-weight: 200; color: rgba(255,255,255,0.8); }
 .lp-latest__item:hover .lp-latest__title { opacity: 0.75; }
@@ -883,3 +884,5 @@ html { box-sizing: border-box; }
   .lp-latest__date { font-size: 0.65rem; }
   .lp-latest__more { font-size: 0.75rem; }
 }
+.lp-section__title { margin-bottom: 0; }
+@media only screen and (max-width: 768px) { .lp-pillar__text { max-width: none; } .lp-latest { padding-top: 0; } }
