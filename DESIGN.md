@@ -24,6 +24,11 @@ colors:
   link-hover: "#8b7ae8"
   footer-surface: "#a491fc"
   on-footer: "#ffffff"
+  hero-surface: "#a491fc"
+  on-hero: "#ffffff"
+  line-research: "#3836A6"
+  line-government: "#FF5F5A"
+  line-field-building: "#5CFBD7"
 typography:
   fontFamilies:
     serif: "Newsreader, Helvetica, sans-serif"
@@ -207,6 +212,15 @@ components:
     item-spacing: "{spacing.md}"
     link-typography: "{typography.body-base}"
     link-hover-color: "{colors.primary}"
+  landing-hero:
+    backgroundColor: "{colors.hero-surface}"
+    textColor: "{colors.on-hero}"
+    minHeight: "calc(100vh - header-height)"
+    fade: "16rem eased gradient from the accent to white below the hero (9rem on mobile)"
+    title: "Newsreader italic 350, 4rem (2.2rem mobile)"
+    subtitle: "Inter 200, 1.4rem, white"
+    columns: "text in 4 of 6 columns; Latest list in the last 2, tops aligned"
+    header: "header sits on the accent with white links until the hero is scrolled past"
   hero:
     paddingTop-desktop: "{spacing.hero-top}"
     paddingBottom-desktop: "{spacing.hero-bottom}"
@@ -252,6 +266,36 @@ components:
     height: "1px"
     backgroundColor: "{colors.primary}"
     marginY: "2.4545454545rem"
+  section-label:
+    fontFamily: Inter
+    fontSize: 0.8rem
+    fontWeight: "300"
+    letterSpacing: 0.06em
+    textTransform: uppercase
+    color: "{colors.on-surface-muted}"
+  latest-list:
+    label: "{components.section-label}"
+    itemTitle: "Inter 300, 1.05rem, white"
+    itemDate: "Inter 200, 0.8rem, white at 80%"
+    divider: "1px solid rgba(255,255,255,0.45)"
+  pillar:
+    title: "Inter 400, 1.05rem (0.9rem mobile), black; hover underline in the line-of-work colour"
+    text: "Inter 200, 1rem, #333, max 85% width, balanced lines"
+    list: "hairline-separated links, Inter 200, 0.95rem"
+  line-of-work-dot:
+    size: 0.55rem-0.65rem
+    rounded: "{rounded.full}"
+    colors: "research {colors.line-research}, government engagement {colors.line-government}, field building {colors.line-field-building}"
+  work-filter:
+    shape: "pill, 1px #e6e6e6 border, Inter 300 0.85rem, dot before the label"
+    active: "border in the line colour, light tint of the line colour as fill"
+  project-row:
+    columns: "date (1 col) · title (4 cols, Newsreader italic) · dots (1 col, right-aligned)"
+  project-date:
+    fontFamily: Inter
+    fontSize: 0.9rem
+    fontWeight: "300"
+    color: "{colors.on-surface-muted}"
   card-news:
     backgroundColor: "{colors.surface-muted}"
     border: "{borders.hairline}"
@@ -347,7 +391,7 @@ brand:
 
 The Agentic State is the digital home of a global policy initiative on agentic AI in government. The visual identity has to do two things at once: signal **serious public-interest scholarship** (this is, after all, a vision paper distributed at international summits) and signal **forward motion** (this is a future-of-government argument, not an archive).
 
-The system resolves that tension through deliberate **editorial restraint**. The page is mostly white. Headlines lean on a single italic serif (Newsreader) to register as *thinking*, while body and UI copy shift to a near-light-weight Inter that feels modern, calm, and unornamented. A single soft-lilac accent (#a491fc) does almost all the work of color: it marks links, primary calls to action, the footer, the horizontal rule, the active state in the paper reader, and the small italic flourishes inside paragraphs. Nothing else is colored. There are no shadows, no gradients, no decorative photography. The result reads like a long-form essay that happens to also be a website.
+The system resolves that tension through deliberate **editorial restraint**. The page is mostly white. Headlines lean on a single italic serif (Newsreader) to register as *thinking*, while body and UI copy shift to a near-light-weight Inter that feels modern, calm, and unornamented. A single soft-lilac accent (#a491fc) does almost all the work of color: it marks links, primary calls to action, the footer, the horizontal rule, the active state in the paper reader, and the small italic flourishes inside paragraphs. Apart from three small line-of-work colours (see Colors), nothing else is colored. There are no shadows, no decorative photography, and one gradient only: the fade from the lilac hero into the white page. The result reads like a long-form essay that happens to also be a website.
 
 The personality is **unhurried, scholarly, optimistic**. Generous vertical rhythm (sections breathe at 6rem of bottom margin; the home hero opens with 13rem of top space) signals that the project is patient with its reader. Italic serif accents — the wordmark, the hero, the section titles, even the buttons — give the surface a literary register that contrasts intentionally with the technological subject matter.
 
@@ -359,16 +403,19 @@ The palette is essentially a duotone: a near-pure white canvas and a single acce
 - **Ink:** Body copy is true black (#000) for headlines and a softer #333 for paragraph copy. Secondary metadata sits at #666. There is no warm/cool drift in the grays — they are neutral by design.
 - **Accent (#a491fc):** A soft, slightly cool lilac. It is the *only* color the design uses for emphasis. It carries the primary button, the inline link, the underline-on-hover for navigation, the horizontal rule between essays, the active scrollspy state in the paper reader, the blockquote rule, and the footer fill. Its hover state is one perceptual step deeper (#8b7ae8). A 12% tint of the accent is reserved for hover-fills inside dropdowns; a flat tint at #d9d0ff (pale lilac) is reserved for "TL;DR" header rows in the paper's tables.
 - **Surface variations:** Three near-whites differentiate quiet zones — #f9f9f9 for news cards, #f8f9fa for the "Stay Connected" band, and #faf9ff for blockquote backgrounds inside the paper reader.
-- **Inversion:** The footer fully inverts: lilac fill, white text, white links. This is the only "loud" color block on the entire site, and it functions as a firm visual close to every page.
+- **Inversion:** Two places fully invert to lilac fill with white text: the full-screen hero on the landing page, which fades into the white page below it, and the footer, which closes every page.
+- **Lines of work:** Three extra colours identify the three lines of work: research `#3836A6` (indigo), government engagements `#FF5F5A` (coral) and field building `#5CFBD7` (mint). They are used only as small dots, as the tint of an active filter, and as the hover underline of the pillar titles on the landing page. Never set text in them: the mint is too pale to read on white.
 
-Avoid introducing additional hues. If a new state needs to be expressed (warning, success, error), prefer typographic emphasis or a tint of the existing lilac before reaching for new color.
+Avoid introducing other hues. If a new state needs to be expressed (warning, success, error), prefer typographic emphasis or a tint of the existing lilac before reaching for new color.
 
 ## Typography
 
 The system runs on two typefaces, used with disciplined separation of duty.
 
 - **Newsreader (serif, italic):** Reserved for *voice*. The wordmark, navigation links, hero titles, section titles, button labels, and the H1 of the paper reader are all set in Newsreader Italic, almost always at weight 300–350. The italic is intentional and constant — upright Newsreader is rarely seen. This typeface does the editorial signaling.
-- **Inter (sans, ultralight):** Reserved for *information*. Subtitles, body paragraphs, list items, news card titles, dates, footer copy, paper-reader H2/H3 are set in Inter, frequently at weight 150–300. The light weight is part of the brand: heavier weights would flatten the air the design is built around.
+- **Inter (sans, ultralight):** Reserved for *information*. Subtitles, body paragraphs, list items, dates, section labels ("MISSION", "LATEST", "SUPPORTED BY"), the three pillar titles on the landing page, the Latest list, footer copy and paper-reader H2/H3 are set in Inter, frequently at weight 150–300 (pillar titles at 400 so they read as subheadings). The light weight is part of the brand: heavier weights would flatten the air the design is built around.
+
+Heading order on the landing page: page title (Newsreader italic) → small uppercase Inter section label → Inter subheading (pillar titles) → body. Keep subheadings smaller than the section titles they sit under.
 
 Hierarchy is established by **size and weight contrast**, not by typeface switching mid-paragraph. Body text uses a comfortable 1.5 line-height in marketing pages and 1.65 in the long-form paper reader, where reading endurance matters more. Strong/bold inside copy steps only to weight 400 — nothing on this site is set bolder than 400 except CSS-default headings — so emphasis stays gentle. Italic emphasis inside paragraphs occasionally swaps to Newsreader Italic with the accent color to call out the project name *The Agentic State* — a recurring, deliberate flourish.
 
@@ -381,7 +428,9 @@ Layout is built on a **6-column CSS grid** capped at 1200px, gutters at 1.5rem, 
 The spacing scale is rem-based and generous:
 
 - Inline rhythm uses 0.5–1.5rem.
-- Section bottom margin defaults to 6rem; the home hero is intentionally extreme (13rem top, 18rem bottom on desktop) to give the wordmark room to breathe.
+- Section bottom margin defaults to 6rem; landing-page sections use 4.5rem, with 4.5rem above each hairline rule so the space either side of a rule is equal.
+- The landing hero fills the screen; content sits at the bottom of it.
+- Inner pages (Our Work, project pages, the Vision Paper) use `hero--compact`: the title block is followed by 3rem of padding and its last element (subtitle or buttons) by a 3rem margin, so the gap to the content is the same on every page.
 - The header is a fixed 4rem strip; a `--headerHeight` variable is the canonical offset used wherever scroll-margin or padding-top compensation is needed.
 - The paper reader uses `scroll-margin-top: calc(headerHeight + 16px)` so deep links never land flush against the fixed nav.
 
@@ -425,23 +474,35 @@ There is no entrance animation, no parallax, no autoplay. Motion supports intera
 
 ### Buttons
 
-The primary button is a lilac pill with an italic Newsreader label in white. Its size is generous (0.75rem × 1.5rem padding desktop, smaller on mobile) and it never carries a shadow. The secondary variant inverts: transparent fill, 2px lilac border, lilac italic label — a classic "ghost pill." On hover, secondary fills with lilac and its label goes white, mirroring the primary state. Buttons appear sparingly, usually one per section, and almost always either "Read our Vision Paper," "Read Online," "Download PDF," or "Join the mailing list."
+The primary button is a lilac pill with an italic Newsreader label in white. Its size is generous (0.75rem × 1.5rem padding desktop, smaller on mobile) and it never carries a shadow. The secondary variant inverts: transparent fill, 2px lilac border, lilac italic label — a classic "ghost pill." On hover, secondary fills with lilac and its label goes white, mirroring the primary state. Buttons appear sparingly, usually one per section. On the lilac hero they invert: a white pill with lilac label, and a white outline pill.
 
 ### Header & Navigation
 
-A fixed 4rem-tall strip on white with a single hairline at the bottom. The wordmark sits left in italic Newsreader; navigation sits right with three labels: Vision Paper, Projects, Contact. Spacing is wide (2rem gaps) and links shift to lilac on hover. Below 768px, the inline links collapse and a hamburger toggle reveals a full-screen modal with stacked links — the same labels, the same italic register, just larger.
+A fixed 4rem-tall strip on white with a single hairline at the bottom. The wordmark sits left in italic Newsreader; navigation sits right with four labels, in this order on every page: Our Work, Observatory, Vision Paper, Contact (the mobile menu adds Home first). The Observatory lives on its own site (observatory.agenticstate.org) and should use the same menu. On the landing page the header sits on the lilac hero with white links and no hairline, and switches to the white version once the hero has scrolled past. Spacing is wide (2rem gaps) and links shift to lilac on hover. Below 768px, the inline links collapse and a hamburger toggle reveals a full-screen modal with stacked links — the same labels, the same italic register, just larger.
 
-### Cards (News / Projects)
+### Cards (News / Projects) — legacy, no longer used on the landing page
 
 Cards are flat: a #f9f9f9 fill with a 4px radius and a hairline border. Title sits in Inter weight 300 at 1.1rem; an excerpt or date sits at 0.9rem in #666. On hover, the entire card flips to the lilac accent with white text — no border change, no shadow, just a 200ms color transition. A persistent **accent variant** (`news-card--accent`) ships the lilac state by default and is used as the recurring "Follow us on LinkedIn" prompt at the end of card grids.
 
 ### Layer / Layers List
 
-A vertical stack of single-line links separated by hairline rules, each with 1rem of vertical padding. Hovering shifts the link color to lilac. Used to enumerate the twelve "layers" of the vision paper on the home page in two parallel three-column grids.
+A vertical stack of single-line links separated by hairline rules, each with 1rem of vertical padding. Hovering shifts the link color to lilac. Formerly used to enumerate the twelve "layers" of the vision paper on the home page; the landing page no longer shows them.
 
-### Stay Connected Block
+### Get Involved Block
 
-A full-width band on #f8f9fa with 3rem of vertical padding and a three-column grid of: italic-serif heading, descriptive paragraph with an inline lilac mailto link, and a CTA paragraph with a primary pill button. Below 768px the columns collapse vertically.
+A full-width band on #f8f9fa with 3rem of vertical padding and a three-column grid of: the italic-serif heading "Get involved", a paragraph with an inline lilac mailto link, and a mailing-list paragraph with a primary pill button. The landing page opens the paragraph with "The Agentic State is an independent nonprofit."; every other page uses the short version starting "Do you have a question, a collaboration in mind, or want to fund our work?". Below 768px the columns collapse vertically.
+
+### Landing Page
+
+From top to bottom: the full-screen lilac hero (headline, one-line sub-line, "Our work" and "Get involved" buttons, and a "Latest" list of the three newest projects with title and date); a fade to white; "MISSION" with two paragraphs and the three lines of work below them, each with a one-line description and a hairline list of example projects; the Vision Paper with its supporters' logos; the Get Involved block. The Latest list and the pillar lists are edited by hand in `index.html`.
+
+### Our Work Page
+
+A one-sentence intro naming the three lines of work, filter pills at the top right (All, Research, Government engagements, Field building) and a hairline list of projects: date, title, and one dot per line of work. Each row carries `data-tags` (e.g. `"research government"`) for the filters; the filter is reflected in the URL hash (`projects.html#government`), so filtered links can be shared and the landing page's pillar titles link straight to them.
+
+### Project Pages
+
+Title, optional action buttons, then the date in the left column (small grey Inter, like the Our Work list) and the text in the right four columns.
 
 ### Footer
 
