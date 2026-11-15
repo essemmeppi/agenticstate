@@ -884,5 +884,4 @@ html { box-sizing: border-box; }
   .lp-latest__date { font-size: 0.65rem; }
   .lp-latest__more { font-size: 0.75rem; }
 }
-.lp-section__title { margin-bottom: 0; }
 @media only screen and (max-width: 768px) { .lp-pillar__text { max-width: none; } .lp-latest { padding-top: 0; } }
